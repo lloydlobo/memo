@@ -1,6 +1,11 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { brand } from "../../utils/brand";
+import { FieldValues, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { signIn, useSession } from "next-auth/react";
+import { getError, toastError } from "../../utils/getError";
+import { useRouter } from "next/router";
 
 /**
  * LoginForm
@@ -8,6 +13,54 @@ import { brand } from "../../utils/brand";
  */
 // https://flowbite.com/blocks/marketing/login/
 export function LoginForm(): JSX.Element {
+  /**
+   * React Hook that gives you access to the logged in user's session data.
+   * [Documentation](https://next-auth.js.org/getting-started/client#usesession)
+   */
+  // `useSession` must be wrapped in a <SessionProvider />
+  const { data: session } = useSession(); // Access session from _app.tsx.
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  /**
+   * Check if user is already logged in.
+   * Redirect to URL from query string or send home.
+   * @param {any} (
+   * @returns {any}
+   * TODO: Add session?.expires...
+   */
+  useEffect(() => {
+    if (session?.user) {
+      router.push((redirect as unknown as URL) || "/");
+    }
+  }, []);
+
+  // Form validation with react-hook-form.
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  // Pass email, password as callback to sign in function.
+  const onSubmit = async ({ email, password }: FieldValues) => {
+    try {
+      const result = await signIn("credentials", {
+        redirecty: false,
+        email,
+        password,
+      });
+      if (result?.error) {
+        toast.error(result.error);
+      }
+      // Catch errors.
+    } catch (err) {
+      toast.error(getError(err as toastError));
+    }
+
+    return { email: email, password: password };
+  };
+
   return (
     <div className="mx-auto mb-12 flex flex-col items-center justify-center px-6 md:h-screen lg:py-0">
       <a href="#" className="mb-6 flex items-center text-2xl font-semibold ">
@@ -27,23 +80,33 @@ export function LoginForm(): JSX.Element {
             Sign in to your account
           </h1>
 
-          <form className="space-y-4 md:space-y-6" action="#">
-            <div>
+          <form
+            className="form-control space-y-4 md:space-y-6"
+            action="#"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className="form-control">
               <label htmlFor="email" className="mb-2 block text-sm font-medium">
                 Your email
               </label>
 
               <input
                 type="email"
-                name="email"
                 id="email"
-                className="focus:ring-primary-600 focus:border-primary-600 block w-full rounded-lg border border-gray-300 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
+                className="focus:ring-primary-600 focus:border-primary-600 input input-md block w-full rounded-lg border border-gray-300 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
                 placeholder="name@company.com"
                 required
+                {...register("email", {
+                  required: "Please enter your email",
+                  pattern: {
+                    value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
+                    message: "Please enter a valid email",
+                  },
+                })}
               />
             </div>
 
-            <div>
+            <div className="form-control">
               <label
                 htmlFor="password"
                 className="mb-2 block text-sm font-medium"
@@ -56,7 +119,7 @@ export function LoginForm(): JSX.Element {
                 name="password"
                 id="password"
                 placeholder="••••••••"
-                className="focus:ring-primary-600 focus:border-primary-600 block w-full rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
+                className="focus:ring-primary-600 focus:border-primary-600 input input-md block w-full rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
                 required
               />
             </div>
@@ -90,7 +153,7 @@ export function LoginForm(): JSX.Element {
 
             <button
               type="submit"
-              className="focus:ring-primary-300  dark:focus:ring-primary-800 w-full rounded-lg px-5 py-2.5 text-center text-sm font-medium focus:outline-none focus:ring-4"
+              className="focus:ring-primary-300 dark:focus:ring-primary-800 btn-primary btn w-full rounded-lg px-5 py-2.5 text-center text-sm font-medium focus:outline-none focus:ring-4"
             >
               Sign in
             </button>

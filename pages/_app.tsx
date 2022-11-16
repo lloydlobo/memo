@@ -1,4 +1,5 @@
 import { Inter } from "@next/font/google";
+import { SessionProvider } from "next-auth/react";
 import "../styles/global.css";
 // import { StoreProvider } from '../utils/Store';
 // import { ThemeProvider } from '../utils/theme-provider';
@@ -18,15 +19,11 @@ function App({
 }: any): JSX.Element {
   return (
     // Use session in loginform.tsx.
-    // <SessionProvider session={session}>
-    // <ThemeProvider>
-    // <StoreProvider>
-    <div className={`${inter.variable} font-sans`}>
-      <Component {...pageProps} />
-    </div>
-    // </StoreProvider>
-    // </ThemeProvider>
-    // </SessionProvider>
+    <SessionProvider session={session}>
+      <div className={`${inter.variable} font-sans`}>
+        <Component {...pageProps} />
+      </div>
+    </SessionProvider>
   );
 }
 
