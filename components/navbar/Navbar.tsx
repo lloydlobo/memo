@@ -27,6 +27,7 @@ export default function Navbar() {
           <a className="btn-ghost btn text-xl normal-case">{brand.name}</a>
         </div>
         <div className="flex-none">
+          <Link href={"/login"}>Login</Link>
           <Link href="/">Home</Link> | <Link href="/about">About</Link> |{" "}
           <Link href="/users">Users List</Link> |{" "}
           <a href="/api/users">Users API</a>
