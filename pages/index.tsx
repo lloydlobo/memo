@@ -3,10 +3,14 @@ import Layout from "../components/Layout";
 
 const Home = () => (
   <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">About</Link>
-    </p>
+    <main>
+      <div className="">
+        <h1>Hello Next.js 👋</h1>
+        <p>
+          <Link href="/about">About</Link>
+        </p>
+      </div>
+    </main>
   </Layout>
 );
 
