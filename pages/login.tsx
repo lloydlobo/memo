@@ -1,8 +1,9 @@
 import React from "react";
+import Layout from "../components/Layout";
 
 export default function login() {
   return (
-    <div>
+    <Layout>
       <div className="card">
         <div className="card-title">Sign In</div>
         <div className="card-body">
@@ -21,6 +22,6 @@ export default function login() {
           </form>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }
