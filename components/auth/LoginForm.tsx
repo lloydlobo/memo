@@ -37,6 +37,7 @@ export function LoginForm(): JSX.Element {
   const { register, handleSubmit, formState: { errors },
   } = useForm();
 
+  // After setting up [...nextauth].ts.
   // Pass email, password as callback to sign in function.
   const onSubmit = async ({ email, password }: FieldValues) => {
     try {

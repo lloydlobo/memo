@@ -35,6 +35,7 @@ export default function Navbar() {
               <li>
                 <Link href={"/login"}>Login</Link>
               </li>
+
               <li className="menu-title mt-2">
                 <span>Pages</span>
               </li>
@@ -44,6 +45,7 @@ export default function Navbar() {
               <li>
                 <Link href="/about">About</Link>
               </li>
+
               <li className="menu-title mt-2">
                 <span>API</span>
               </li>
