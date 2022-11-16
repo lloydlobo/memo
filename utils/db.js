@@ -8,14 +8,20 @@ async function connect() {
     console.log("db: already connected");
     return;
   }
+
   if (mongoose.connections.length > 0) {
     connection.isConnected = mongoose.connections[0].readyState;
-    connection.isConnected === 1
-      ? console.log("db: already connected")
-      : await mongoose.disconnect();
+
+    if (connection.isConnected === 1) {
+      console.log("db: already connected");
+      return;
+    }
+
+    await mongoose.disconnect();
   }
 
   const db = await mongoose.connect(process.env.MONGODB_URI);
+
   console.log("db: use previous connection");
   connection.isConnected = db.connections[0].readyState;
 }
@@ -24,6 +30,7 @@ async function disconnect() {
   if (connection.isConnected) {
     if (process.env.NODE_ENV === "production") {
       await mongoose.disconnect();
+
       connection.isConnected = false;
     } else {
       console.log("db: disconnected");

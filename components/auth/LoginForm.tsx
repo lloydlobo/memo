@@ -28,9 +28,9 @@ export function LoginForm(): JSX.Element {
    * @returns {any}
    * TODO: Add session?.expires...
    */
-  useEffect(() => {
-    if (session?.user) router.push((redirect as unknown as URL) || "/");
-  }, []);
+  // useEffect(() => {
+  //   if (session?.user) router.push((redirect as unknown as URL) || "/");
+  // }, []);
 
   // Form validation with react-hook-form.
   // prettier-ignore
