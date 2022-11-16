@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React, { ReactNode, useEffect, useState } from "react";
+import { LoginForm } from "./auth/LoginForm";
 import Navbar from "./navbar/Navbar";
 import { NavbarBottom } from "./navbar/NavbarBottom";
 import { ToastTopStart } from "./toast/ToastTopStart";
@@ -21,7 +22,7 @@ function Layout({ children, title = "This is the default title" }: Props) {
 
   // JSX.Element.
   return (
-    <div className="wrapper ">
+    <div className="wrapper">
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
@@ -33,7 +34,10 @@ function Layout({ children, title = "This is the default title" }: Props) {
       </header>
 
       {loading ? (
-        <ToastTopStart alert1={"Loading..."} alert2={""} />
+        <>
+          <ToastTopStart alert1={"Loading..."} alert2={""} />
+          <LoginForm />
+        </>
       ) : (
         <>{children}</>
       )}

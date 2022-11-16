@@ -26,5 +26,5 @@ body {
 }
 
 main {
-  @apply container p-4;
+  @apply container px-5;
 }
