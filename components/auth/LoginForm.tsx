@@ -80,7 +80,6 @@ export function LoginForm(): JSX.Element {
               <label htmlFor="email" className="mb-2 block text-sm font-medium">
                 Your email
               </label>
-
               <input
                 type="email"
                 id="email"
