@@ -4,12 +4,14 @@ import data from "../../utils/data";
 
 /**
  * handler seeds mongoDB at /api/seed endpoint.
+ * Description
  * @param {any} req
  * @param {any} res
- * @returns {any}
+ * @returns {Promise<void>}
  */
+// NOTE: destructuring parameters causes error.
 // https://youtu.be/_IBlyR5mRzA?t=8661
-async function handler(req, res) {
+async function handler(_req: any, res: any): Promise<void> {
   await db.connect();
 
   await User.deleteMany();
