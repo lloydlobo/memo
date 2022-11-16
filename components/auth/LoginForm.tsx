@@ -1,11 +1,11 @@
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import { brand } from "../../utils/brand";
 import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { signIn, useSession } from "next-auth/react";
+import { brand } from "../../utils/brand";
 import { getError, toastError } from "../../utils/getError";
-import { useRouter } from "next/router";
 
 /**
  * LoginForm
@@ -15,10 +15,9 @@ import { useRouter } from "next/router";
 export function LoginForm(): JSX.Element {
   /**
    * React Hook that gives you access to the logged in user's session data.
-   * [Documentation](https://next-auth.js.org/getting-started/client#usesession)
+   * `useSession` must be wrapped in a <SessionProvider />. Access session from _app.tsx.
    */
-  // `useSession` must be wrapped in a <SessionProvider />
-  const { data: session } = useSession(); // Access session from _app.tsx.
+  const { data: session } = useSession();
   const router = useRouter();
   const { redirect } = router.query;
 
@@ -30,34 +29,26 @@ export function LoginForm(): JSX.Element {
    * TODO: Add session?.expires...
    */
   useEffect(() => {
-    if (session?.user) {
-      router.push((redirect as unknown as URL) || "/");
-    }
+    if (session?.user) router.push((redirect as unknown as URL) || "/");
   }, []);
 
   // Form validation with react-hook-form.
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
+  // prettier-ignore
+  const { register, handleSubmit, formState: { errors },
   } = useForm();
 
   // Pass email, password as callback to sign in function.
   const onSubmit = async ({ email, password }: FieldValues) => {
     try {
       const result = await signIn("credentials", {
-        redirecty: false,
+        redirect: false,
         email,
         password,
       });
-      if (result?.error) {
-        toast.error(result.error);
-      }
-      // Catch errors.
+      if (result?.error) toast.error(result.error);
     } catch (err) {
       toast.error(getError(err as toastError));
     }
-
     return { email: email, password: password };
   };
 
@@ -104,6 +95,11 @@ export function LoginForm(): JSX.Element {
                   },
                 })}
               />
+              {errors.email && (
+                <div className="text-error">
+                  <>{errors.email.message}</>
+                </div>
+              )}
             </div>
 
             <div className="form-control">
@@ -113,15 +109,25 @@ export function LoginForm(): JSX.Element {
               >
                 Password
               </label>
-
               <input
                 type="password"
-                name="password"
                 id="password"
                 placeholder="••••••••"
                 className="focus:ring-primary-600 focus:border-primary-600 input input-md block w-full rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
                 required
+                {...register("password", {
+                  required: "Please enter your password",
+                  minLength: {
+                    value: 6,
+                    message: "Your password must have more than 5 characters",
+                  },
+                })}
               />
+              {errors.password && (
+                <div className="text-error">
+                  <>{errors.password.message}</>
+                </div>
+              )}
             </div>
 
             <div className="flex items-center justify-between">
