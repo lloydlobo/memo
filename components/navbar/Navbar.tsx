@@ -53,6 +53,9 @@ export default function Navbar() {
               <li>
                 <a href="/api/users">Users API</a>
               </li>
+              <li>
+                <a href="/api/seed">Seed database</a>
+              </li>
             </ul>
           </div>
         </div>
