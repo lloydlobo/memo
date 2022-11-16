@@ -26,16 +26,25 @@ export default function Navbar() {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+              className="dropdown-content menu rounded-box menu-compact mt-2 w-52 bg-base-100 p-2 shadow"
             >
+              <li className="menu-title mt-2">
+                <span>Auth</span>
+              </li>
               <li>
                 <Link href={"/login"}>Login</Link>
+              </li>
+              <li className="menu-title mt-2">
+                <span>Pages</span>
               </li>
               <li>
                 <Link href="/">Home</Link>
               </li>
               <li>
                 <Link href="/about">About</Link>
+              </li>
+              <li className="menu-title mt-2">
+                <span>API</span>
               </li>
               <li>
                 <Link href="/users">Users List</Link>
