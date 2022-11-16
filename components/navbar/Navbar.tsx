@@ -24,6 +24,7 @@ export default function Navbar() {
                 />
               </svg>
             </label>
+
             <ul
               tabIndex={0}
               className="dropdown-content menu rounded-box menu-compact mt-2 w-52 bg-base-100 p-2 shadow"
@@ -65,7 +66,6 @@ export default function Navbar() {
         <div className="navbar-end">
           <button className="btn-ghost btn-circle btn">
             <div className="indicator">
-              {/* <EditInactiveIcon className="mr-2 h-5 w-5" aria-hidden="true" /> */}
               <BellActiveIcon className="h-5 w-5" />
               <span className="badge-primary badge badge-xs indicator-item"></span>
             </div>
