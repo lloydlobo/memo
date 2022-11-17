@@ -8,6 +8,8 @@ module.exports = {
         "./pages/**/*.{js,ts,jsx,tsx}",
         "./components/**/*.{js,ts,jsx,tsx}",
     ],
+    // TODO: Add gradients....
+    // https://hypercolor.dev/
     theme: {
         extend: {
             fontFamily: {
