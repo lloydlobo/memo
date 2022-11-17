@@ -16,6 +16,7 @@ export function LoginForm(): JSX.Element {
   /**
    * React Hook that gives you access to the logged in user's session data.
    * `useSession` must be wrapped in a <SessionProvider />. Access session from _app.tsx.
+   * AJAX requests.
    */
   const { data: session } = useSession();
   const router = useRouter();
@@ -24,13 +25,14 @@ export function LoginForm(): JSX.Element {
   /**
    * Check if user is already logged in.
    * Redirect to URL from query string or send home.
-   * @param {any} (
-   * @returns {any}
+   * Setup after ToastContainer & [...nextauth] setup.
    * TODO: Add session?.expires...
    */
-  // useEffect(() => {
-  //   if (session?.user) router.push((redirect as unknown as URL) || "/");
-  // }, []);
+  useEffect(() => {
+    if (session?.user) {
+      router.push((redirect as unknown as URL) || "/");
+    }
+  }, [router, session, redirect]);
 
   // Form validation with react-hook-form.
   // prettier-ignore
@@ -41,6 +43,7 @@ export function LoginForm(): JSX.Element {
   // Pass email, password as callback to sign in function.
   const onSubmit = async ({ email, password }: FieldValues) => {
     try {
+      // Using credentials instead of google, github, etc.
       const result = await signIn("credentials", {
         redirect: false,
         email,

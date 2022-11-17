@@ -68,10 +68,10 @@ export const authOptions = {
       },
     }),
 
-    GithubProvider({
-      clientId: envGithubID(),
-      clientSecret: envGithubSecret(),
-    }),
+    // GithubProvider({
+    //   clientId: envGithubID(),
+    //   clientSecret: envGithubSecret(),
+    // }),
     // ...add more providers here
   ],
 };

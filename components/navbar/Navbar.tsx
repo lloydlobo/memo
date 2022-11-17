@@ -1,8 +1,10 @@
 import Link from "next/link";
 import React, { SVGProps } from "react";
 import { brand } from "../../utils/brand";
+import { FaRegUserCircle } from "react-icons/fa";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function Navbar() {
+export default function Navbar({ status, session }: any) {
   return (
     <nav>
       <div className="navbar">
@@ -60,9 +62,15 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
+          <Link
+            className="btn-ghost btn text-xl normal-case lg:hidden"
+            href={"/"}
+          >
+            {brand.name}
+          </Link>
         </div>
 
-        <div className="navbar-center">
+        <div className="navbar-center hidden lg:flex">
           <Link className="btn-ghost btn text-xl normal-case" href={"/"}>
             {brand.name}
           </Link>
@@ -70,19 +78,54 @@ export default function Navbar() {
 
         <div className="navbar-end">
           <button className="btn-ghost btn-circle btn">
-            <div className="indicator">
-              <BellActiveIcon className="h-5 w-5" />
-              <span className="badge-primary badge badge-xs indicator-item"></span>
-            </div>
-          </button>
-
-          <button className="btn-ghost btn-circle btn">
             <SearchInactiveIcon className="h-5 w-5" />
           </button>
 
-          <button className="btn-ghost btn-square btn hidden sm:flex">
-            <MoreInactiveIcon className="inline-block h-5 w-5 stroke-current" />
+          <button className="btn-ghost btn-circle btn">
+            <div className="indicator">
+              <BellActiveIcon className="h-5 w-5" />
+              <span className="badge badge-primary badge-xs indicator-item"></span>
+            </div>
           </button>
+
+          <button
+            data-tip="settings"
+            className="btn-ghost tooltip tooltip-bottom btn-circle btn"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+              />
+            </svg>
+
+            {/* <MoreInactiveIcon className="inline-block h-5 w-5  stroke-current" /> */}
+          </button>
+          {/* Show loading if status is loading, if user exists show user name else show Sign In button. */}
+          {status === "loading" ? (
+            <div className="badge">Loading</div>
+          ) : (
+            ((): JSX.Element =>
+              session?.user ? (
+                <>{session.user.name}</>
+              ) : (
+                <Link
+                  href="/login"
+                  className="btn-outline btn-sm btn grid  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary"
+                >
+                  <FaRegUserCircle className="text-lg" />
+                  <span>Sign in</span>
+                </Link>
+              ))()
+          )}
         </div>
       </div>
     </nav>
