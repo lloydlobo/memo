@@ -5,6 +5,7 @@ import db from "../../../utils/db";
 import User from "../../../models/User";
 import bcryptjs from "bcryptjs";
 
+// FIXME: Type error: Type '(credentials: Record<string, string> | undefined) => Promise<{ _id?: undefined; name?: undefined; email?: undefined; image?: undefined; isAdmin?: undefined; } | { _id: any; name: any; email: any; image: string; isAdmin: any; }>' is not assignable to type '(credentials: Record<string, string> | undefined, req: Pick<RequestInternal, "body" | "query" | "headers" | "method">) => Awaitable<User | null>'.
 /**
  * authOptions() contains the dynamic route handler for
  * NextAuth.js which also contains all global NextAuth.js configurations.
@@ -20,13 +21,13 @@ export const authOptions = {
 
   // user from db, token from next-auth lifecycle.
   callbacks: {
-    async jwt({ token, user }: any) {
+    async jwt({ token, user }) {
       if (user?._id) token._id = user._id;
       if (user?.isAdmin) token.isAdmin = user.isAdmin;
       return token; // Fill token with db's data in users.
     },
 
-    async session({ session, token }: any) {
+    async session({ session, token }) {
       if (token?._id) session.user._id = token._id;
       if (token?.isAdmin) session.user.isAdmin = token.isAdmin;
       return session; // Fill session with token's data.
@@ -78,7 +79,7 @@ export const authOptions = {
 
 // Configure Shared session state in _app.tsx.
 // Instances of useSession will then have access to the session data and status. The <SessionProvider /> also takes care of keeping the session updated and synced between browser tabs and windows.
-export default NextAuth(authOptions as any);
+export default NextAuth(authOptions);
 
 /* TODO: Deploying to production
    When deploying your site set the NEXTAUTH_URL environment variable to the canonical URL of the website.
@@ -92,8 +93,8 @@ export default NextAuth(authOptions as any);
  * Throws error if env is undefined.
  * @returns {string}
  */
-function envGithubID(): string {
-  const envGit: string | undefined = process.env.GITHUB_ID;
+function envGithubID() {
+  const envGit = process.env.GITHUB_ID;
   if (typeof envGit === "undefined") {
     throw new Error("next-auth: process.env.GITHUB_ID is undefined");
   }
@@ -105,8 +106,8 @@ function envGithubID(): string {
  * Throws error if env is undefined.
  * @returns {string}
  */
-function envGithubSecret(): string {
-  const envGit: string | undefined = process.env.GITHUB_SECRET;
+function envGithubSecret() {
+  const envGit = process.env.GITHUB_SECRET;
   if (typeof envGit === "undefined") {
     throw new Error("next-auth: process.env.GITHUB_SECRET is undefined");
   }
