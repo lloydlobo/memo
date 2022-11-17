@@ -6,7 +6,7 @@ import { brand } from "../utils/brand";
 const Home = () => (
     <Layout title={`Home | ${brand.name}`}>
         <main>
-            <section id="hero-section">
+            <section id="hero-section z-0">
                 <div
                     className="hero min-h-screen bg-base-300"
                     // style={{ height: "calc(100vh - 5rem)" }}

@@ -45,7 +45,8 @@ function App({
  */
 function Auth({ children }: any): any {
     const router = useRouter();
-
+    // https://next-auth.js.org/getting-started/client#custom-client-session-handling
+    // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
     const { status, data: session } = useSession({
         required: true,
         onUnauthenticated() {

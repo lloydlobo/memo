@@ -46,7 +46,7 @@ function Layout({
                 />
             </Head>
 
-            <header className="bg-black/25 shadow-md">
+            <header className="z-50 bg-black/25 shadow-md">
                 <Navbar status={status} session={session} />
                 {/* FIX: Mover toast container after Head without messing layout grid of main */}
                 <ToastContainer position="bottom-center" limit={1} />

@@ -140,7 +140,7 @@ export default function Navbar({ status, session }: any) {
                                         <div className="h-auto w-9 object-cover">
                                             <UserInitialsAvatar
                                                 firstName={session.user.name}
-                                                secondName={"Rozan"}
+                                                secondName={""}
                                             />
                                         </div>
                                     </>
