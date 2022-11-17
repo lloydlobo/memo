@@ -3,6 +3,8 @@ import React, { SVGProps } from "react";
 import { brand } from "../../utils/brand";
 import { FaRegUserCircle } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
+import MenuDropdown from "./Menu";
+import UserInitialsAvatar from "../user/UserInitialsAvatar";
 
 export default function Navbar({ status, session }: any) {
   return (
@@ -77,11 +79,17 @@ export default function Navbar({ status, session }: any) {
         </div>
 
         <div className="navbar-end">
-          <button className="btn-ghost btn-circle btn">
+          <button
+            className="btn-ghost tooltip tooltip-bottom btn-circle btn grid normal-case"
+            data-tip="Search"
+          >
             <SearchInactiveIcon className="h-5 w-5" />
           </button>
 
-          <button className="btn-ghost btn-circle btn">
+          <button
+            className="btn-ghost tooltip tooltip-bottom btn-circle btn grid normal-case"
+            data-tip="Notifications"
+          >
             <div className="indicator">
               <BellActiveIcon className="h-5 w-5" />
               <span className="badge badge-primary badge-xs indicator-item"></span>
@@ -89,8 +97,8 @@ export default function Navbar({ status, session }: any) {
           </button>
 
           <button
-            data-tip="settings"
-            className="btn-ghost tooltip tooltip-bottom btn-circle btn"
+            data-tip="Settings"
+            className="tooltip tooltip-bottom hover:btn-link"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,24 +114,30 @@ export default function Navbar({ status, session }: any) {
                 d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
               />
             </svg>
-
             {/* <MoreInactiveIcon className="inline-block h-5 w-5  stroke-current" /> */}
           </button>
+
           {/* Show loading if status is loading, if user exists show user name else show Sign In button. */}
           {status === "loading" ? (
-            <div className="badge">Loading</div>
+            <>Loading</>
           ) : (
             ((): JSX.Element =>
               session?.user ? (
-                <>{session.user.name}</>
+                <MenuDropdown>
+                  <>
+                    <div className="h-auto w-9 object-cover">
+                      <UserInitialsAvatar
+                        firstName={session.user.name}
+                        secondName={"Rozan"}
+                      />
+                    </div>
+                  </>
+                </MenuDropdown>
               ) : (
-                <Link
-                  href="/login"
-                  className="btn-outline btn-sm btn grid  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary"
-                >
+                <button className="btn-outline btn-sm btn grid w-max  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary">
                   <FaRegUserCircle className="text-lg" />
-                  <span>Sign in</span>
-                </Link>
+                  <span>Sign In</span>
+                </button>
               ))()
           )}
         </div>

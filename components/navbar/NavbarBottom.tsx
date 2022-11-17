@@ -3,6 +3,10 @@ import { useRouter } from "next/router";
 import React from "react";
 
 export function NavbarBottom() {
+  /* https://github.com/vercel/next.js/issues/20743
+     SyntaxError: Failed to execute 'measure' on 'Performance': The mark 'beforeRender' does not exist.
+     FIXME: In my case, looks like using useCallback + useEffect hook inside a Context is what was causing that error, when I rewrote the code the error sttoped. Very strange.
+     FIXME: I'm my case, i was getting the error when i use router.push() to the page i was currently on */
   const router = useRouter();
 
   return (
