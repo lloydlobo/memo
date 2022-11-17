@@ -25,22 +25,25 @@ function Layout({
     // status flag shows loading of session.
     const { status, data: session } = useSession();
 
-    const [loading, setLoading] = useState(true);
-
-    // Preloader mock.
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(!loading);
-        }, 1000);
-    }, []);
-
+    // const [loading, setLoading] = useState(true);
+    //
+    // // Preloader mock.
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setLoading(!loading);
+    //     }, 1000);
+    // }, []);
+    //
     // JSX.Element.
     return (
         <div className="wrapper">
             <Head>
                 <title>{title}</title>
                 <meta charSet="utf-8" />
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
             </Head>
 
             <header className="bg-black/25 shadow-md">
@@ -49,7 +52,7 @@ function Layout({
                 <ToastContainer position="bottom-center" limit={1} />
             </header>
 
-            {loading ? (
+            {false ? (
                 <>
                     <ToastTopStart alert1={"Loading..."} alert2={""} />
                     <LoginForm />

@@ -9,16 +9,17 @@ import React from "react";
  * @returns {JSX.Element}
  */
 export function DropdownLink(props: {
-  [x: string]: any;
-  href?: any;
-  children: any;
+    [x: string]: any;
+    href?: any;
+    children: any;
 }): JSX.Element {
-  let { href, children, ...rest } = props;
-  return (
-    <>
-      <Link {...rest} href={href}>
-        {children}
-      </Link>
-    </>
-  );
+    let { href, children, ...rest } = props;
+    // FIX: Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+    return (
+        <>
+            <Link {...rest} href={href}>
+                {children}
+            </Link>
+        </>
+    );
 }
