@@ -3,6 +3,9 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 
+/* FIXME: ./components/navbar/Menu.tsx:149:27
+Type error: Parameter 'props' implicitly has an 'any' type. */
+
 export default function MenuDropdown({ children }: any): JSX.Element {
   return (
     <div className="text-right">
@@ -146,7 +149,9 @@ export default function MenuDropdown({ children }: any): JSX.Element {
   );
 }
 
-function EditInactiveIcon(props) {
+function EditInactiveIcon(
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
@@ -164,7 +169,9 @@ function EditInactiveIcon(props) {
   );
 }
 
-function EditActiveIcon(props) {
+function EditActiveIcon(
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
@@ -182,7 +189,9 @@ function EditActiveIcon(props) {
   );
 }
 
-function DuplicateInactiveIcon(props) {
+function DuplicateInactiveIcon(
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
@@ -206,7 +215,9 @@ function DuplicateInactiveIcon(props) {
   );
 }
 
-function DuplicateActiveIcon(props) {
+function DuplicateActiveIcon(
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
@@ -230,7 +241,9 @@ function DuplicateActiveIcon(props) {
   );
 }
 
-function ArchiveInactiveIcon(props) {
+function ArchiveInactiveIcon(
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
@@ -261,7 +274,9 @@ function ArchiveInactiveIcon(props) {
   );
 }
 
-function ArchiveActiveIcon(props) {
+function ArchiveActiveIcon(
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
@@ -292,7 +307,9 @@ function ArchiveActiveIcon(props) {
   );
 }
 
-function MoveInactiveIcon(props) {
+function MoveInactiveIcon(
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
@@ -307,7 +324,9 @@ function MoveInactiveIcon(props) {
   );
 }
 
-function MoveActiveIcon(props) {
+function MoveActiveIcon(
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
@@ -322,7 +341,9 @@ function MoveActiveIcon(props) {
   );
 }
 
-function DeleteInactiveIcon(props) {
+function DeleteInactiveIcon(
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
@@ -345,7 +366,9 @@ function DeleteInactiveIcon(props) {
   );
 }
 
-function DeleteActiveIcon(props) {
+function DeleteActiveIcon(
+  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
