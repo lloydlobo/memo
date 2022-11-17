@@ -26,5 +26,5 @@ body {
 }
 
 main {
-  @apply container px-5;
+  @apply grid;
 }

@@ -7,62 +7,67 @@ import Navbar from "./navbar/Navbar";
 import { NavbarBottom } from "./navbar/NavbarBottom";
 import { ToastTopStart } from "./toast/ToastTopStart";
 import "react-toastify/dist/ReactToastify.css";
+import { Footer } from "./footer/Footer";
 
 type Props = {
-  children?: ReactNode;
-  title?: string;
+    children?: ReactNode;
+    title?: string;
 };
 
-function Layout({ children, title = "This is the default title" }: Props) {
-  // After setting up  SessionProvided in _app.tsx...
-  // status flag shows loading of session.
-  const { status, data: session } = useSession();
+function Layout({
+    children,
+    title = "This is the default title",
+}: {
+    children: ReactNode;
+    title: string;
+}): JSX.Element {
+    // After setting up  SessionProvided in _app.tsx...
+    // status flag shows loading of session.
+    const { status, data: session } = useSession();
 
-  const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
-  // Preloader mock.
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(!loading);
-    }, 1000);
-  }, []);
+    // Preloader mock.
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(!loading);
+        }, 1000);
+    }, []);
 
-  // JSX.Element.
-  return (
-    <div className="wrapper">
-      <Head>
-        <title>{title}</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    // JSX.Element.
+    return (
+        <div className="wrapper">
+            <Head>
+                <title>{title}</title>
+                <meta charSet="utf-8" />
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
 
-      <header className="bg-base-300 shadow-md">
-        <Navbar status={status} session={session} />
-        {/* FIX: Mover toast container after Head without messing layout grid of main */}
-        <ToastContainer position="bottom-center" limit={1} />
-      </header>
+            <header className="bg-black/25 shadow-md">
+                <Navbar status={status} session={session} />
+                {/* FIX: Mover toast container after Head without messing layout grid of main */}
+                <ToastContainer position="bottom-center" limit={1} />
+            </header>
 
-      {loading ? (
-        <>
-          <ToastTopStart alert1={"Loading..."} alert2={""} />
-          <LoginForm />
-          <ToastContainer position="bottom-center" limit={1} />
-        </>
-      ) : (
-        <>{children}</>
-      )}
+            {loading ? (
+                <>
+                    <ToastTopStart alert1={"Loading..."} alert2={""} />
+                    <LoginForm />
+                    <ToastContainer position="bottom-center" limit={1} />
+                </>
+            ) : (
+                <>{children}</>
+            )}
 
-      <footer>
-        <div className="sm:hidden">
-          <NavbarBottom />
+            <footer>
+                <div className="sm:hidden">
+                    <NavbarBottom />
+                </div>
+                {/* <hr /> */}
+                <Footer />
+            </footer>
         </div>
-        <div className="hidden sm:grid">
-          <hr />
-          <span>I'm here to stay (Footer)</span>
-        </div>
-      </footer>
-    </div>
-  );
+    );
 }
 
 export default Layout;

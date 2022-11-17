@@ -15,66 +15,66 @@ import bcryptjs from "bcryptjs";
  */
 // https://youtu.be/_IBlyR5mRzA?t=8972
 export const authOptions = {
-  session: {
-    strategy: "jwt",
-  },
-
-  // user from db, token from next-auth lifecycle.
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user?._id) token._id = user._id;
-      if (user?.isAdmin) token.isAdmin = user.isAdmin;
-      return token; // Fill token with db's data in users.
+    session: {
+        strategy: "jwt",
     },
 
-    async session({ session, token }) {
-      if (token?._id) session.user._id = token._id;
-      if (token?.isAdmin) session.user.isAdmin = token.isAdmin;
-      return session; // Fill session with token's data.
+    // user from db, token from next-auth lifecycle.
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user?._id) token._id = user._id;
+            if (user?.isAdmin) token.isAdmin = user.isAdmin;
+            return token; // Fill token with db's data in users.
+        },
+
+        async session({ session, token }) {
+            if (token?._id) session.user._id = token._id;
+            if (token?.isAdmin) session.user.isAdmin = token.isAdmin;
+            return session; // Fill session with token's data.
+        },
     },
-  },
 
-  // Configure one or more authentication providers
-  providers: [
-    CredentialsProvider({
-      async authorize(credentials) {
-        await db.connect();
-        if (credentials === undefined) {
-          console.error("next-auth: credentials is undefined");
-          return {};
-        }
-        // Find user in db based on email in credential.
-        const user = await User.findOne({
-          email: credentials.email,
-          // password: credentials.password,
-        });
-        await db.disconnect();
+    // Configure one or more authentication providers
+    providers: [
+        CredentialsProvider({
+            async authorize(credentials) {
+                await db.connect();
+                if (credentials === undefined) {
+                    console.error("next-auth: credentials is undefined");
+                    return {};
+                }
+                // Find user in db based on email in credential.
+                const user = await User.findOne({
+                    email: credentials.email,
+                    // password: credentials.password,
+                });
+                await db.disconnect();
 
-        const hasAuthorizedPassword = bcryptjs.compareSync(
-          credentials.password,
-          user.password
-        );
+                const hasAuthorizedPassword = bcryptjs.compareSync(
+                    credentials.password,
+                    user.password
+                );
 
-        // Match user with password.
-        if (user && hasAuthorizedPassword) {
-          return {
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            image: "f",
-            isAdmin: user.isAdmin,
-          };
-        }
-        throw new Error("next-auth: Invalid email or password");
-      },
-    }),
-
-    // GithubProvider({
-    //   clientId: envGithubID(),
-    //   clientSecret: envGithubSecret(),
-    // }),
-    // ...add more providers here
-  ],
+                // Match user with password.
+                if (user && hasAuthorizedPassword) {
+                    return {
+                        _id: user._id,
+                        name: user.name,
+                        email: user.email,
+                        image: "f",
+                        isAdmin: user.isAdmin,
+                    };
+                }
+                throw new Error("next-auth: Invalid email or password");
+            },
+        }),
+        // https://github.com/vercel/mongodb-starter/blob/main/pages/api/auth/[...nextauth].ts
+        // GithubProvider({
+        //   clientId: envGithubID(),
+        //   clientSecret: envGithubSecret(),
+        // }),
+        // ...add more providers here
+    ],
 };
 
 // Configure Shared session state in _app.tsx.
@@ -94,11 +94,11 @@ export default NextAuth(authOptions);
  * @returns {string}
  */
 function envGithubID() {
-  const envGit = process.env.GITHUB_ID;
-  if (typeof envGit === "undefined") {
-    throw new Error("next-auth: process.env.GITHUB_ID is undefined");
-  }
-  return envGit;
+    const envGit = process.env.GITHUB_ID;
+    if (typeof envGit === "undefined") {
+        throw new Error("next-auth: process.env.GITHUB_ID is undefined");
+    }
+    return envGit;
 }
 
 /**
@@ -107,9 +107,9 @@ function envGithubID() {
  * @returns {string}
  */
 function envGithubSecret() {
-  const envGit = process.env.GITHUB_SECRET;
-  if (typeof envGit === "undefined") {
-    throw new Error("next-auth: process.env.GITHUB_SECRET is undefined");
-  }
-  return envGit;
+    const envGit = process.env.GITHUB_SECRET;
+    if (typeof envGit === "undefined") {
+        throw new Error("next-auth: process.env.GITHUB_SECRET is undefined");
+    }
+    return envGit;
 }

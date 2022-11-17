@@ -2,11 +2,14 @@ import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
+import { DropdownLink } from "./DropdownLink";
+import { useRouter } from "next/router";
 
 /* FIXME: ./components/navbar/Menu.tsx:149:27
 Type error: Parameter 'props' implicitly has an 'any' type. */
 
 export default function MenuDropdown({ children }: any): JSX.Element {
+  const router = useRouter();
   return (
     <div className="text-right">
       <Menu as="div" className="relative inline-block text-left">
@@ -25,81 +28,90 @@ export default function MenuDropdown({ children }: any): JSX.Element {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-secondary divide-opacity-60 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    {active ? (
-                      <EditActiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <EditInactiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    )}
-                    Edit
-                  </button>
+                  <DropdownLink href={"/profile"}>
+                    <button
+                      className={`${
+                        active ? "btn-primary" : ""
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                      {active ? (
+                        <EditActiveIcon
+                          className="mr-2 h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <EditInactiveIcon
+                          className="mr-2 h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      )}
+                      Profile
+                    </button>
+                  </DropdownLink>
                 )}
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  <DropdownLink
+                    onClick={() => router.push("/login?redirect=/logout")}
+                    href={"#"}
                   >
-                    {active ? (
-                      <DuplicateActiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <DuplicateInactiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    )}
-                    Duplicate
-                  </button>
+                    <button
+                      className={`${
+                        active ? "btn-primary" : ""
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                      {active ? (
+                        <DuplicateActiveIcon
+                          className="mr-2 h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <DuplicateInactiveIcon
+                          className="mr-2 h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      )}
+                      Logout
+                    </button>
+                  </DropdownLink>
                 )}
               </Menu.Item>
             </div>
             <div className="px-1 py-1">
               <Menu.Item>
                 {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    {active ? (
-                      <ArchiveActiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <ArchiveInactiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    )}
-                    Archive
-                  </button>
+                  <DropdownLink href={"/login"}>
+                    <button
+                      className={`${
+                        active ? "btn-primary " : ""
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                      {active ? (
+                        <ArchiveActiveIcon
+                          className="mr-2 h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <ArchiveInactiveIcon
+                          className="mr-2 h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      )}
+                      Appearance: Dark
+                    </button>
+                  </DropdownLink>
                 )}
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
                   <button
                     className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                      active ? "btn-primary" : ""
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     {active ? (
@@ -121,24 +133,26 @@ export default function MenuDropdown({ children }: any): JSX.Element {
             <div className="px-1 py-1">
               <Menu.Item>
                 {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    {active ? (
-                      <DeleteActiveIcon
-                        className="mr-2 h-5 w-5 text-violet-400"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <DeleteInactiveIcon
-                        className="mr-2 h-5 w-5 text-violet-400"
-                        aria-hidden="true"
-                      />
-                    )}
-                    Delete
-                  </button>
+                  <DropdownLink href="/logout">
+                    <button
+                      className={`${
+                        active ? "btn-warning" : ""
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                      {active ? (
+                        <DeleteActiveIcon
+                          className="mr-2 h-5 w-5 text-violet-400"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <DeleteInactiveIcon
+                          className="mr-2 h-5 w-5 text-violet-400"
+                          aria-hidden="true"
+                        />
+                      )}
+                      Settings
+                    </button>
+                  </DropdownLink>
                 )}
               </Menu.Item>
             </div>
