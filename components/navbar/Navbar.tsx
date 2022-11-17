@@ -104,7 +104,7 @@ export default function Navbar({ status, session }: any) {
                     >
                         <div className="indicator">
                             <BellActiveIcon className="h-5 w-5" />
-                            <span className="badge-primary badge badge-xs indicator-item"></span>
+                            <span className="badge badge-primary badge-xs indicator-item"></span>
                         </div>
                     </button>
 
@@ -146,10 +146,12 @@ export default function Navbar({ status, session }: any) {
                                     </>
                                 </MenuDropdown>
                             ) : (
-                                <button className="btn-outline btn-sm btn grid w-max  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary">
-                                    <FaRegUserCircle className="text-lg" />
-                                    <span>Sign In</span>
-                                </button>
+                                <Link href={"/login"}>
+                                    <button className="btn-outline btn-sm btn grid w-max  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary">
+                                        <FaRegUserCircle className="text-lg" />
+                                        <span>Sign In</span>
+                                    </button>
+                                </Link>
                             ))()
                     )}
                 </div>
