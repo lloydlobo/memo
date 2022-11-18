@@ -172,4 +172,5 @@ const Home = () => (
     </Layout>
 );
 
+Home.auth = false;
 export default Home;

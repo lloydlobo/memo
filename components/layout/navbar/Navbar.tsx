@@ -1,165 +1,220 @@
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React, { SVGProps } from "react";
+import React, { SVGProps, useEffect, useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { BRAND } from "../../../lib/constants";
+import { AddTaskModal } from "../../tasks/AddTaskModal";
 import UserInitialsAvatar from "../../user/UserInitialsAvatar";
 import MenuDropdown from "./Menu";
+import { GlobalHotKeys } from "react-hotkeys";
+import { PopoverProductivity } from "./PopoverProductivity";
 
 export default function Navbar({ status, session }: any): JSX.Element {
+    const shortCutsKeymap = {
+        MOVE_NEXT_PAGE: ["right"],
+        MOVE_PREV_PAGE: ["left"],
+        OPEN_PRODUCTIVITY_O: ["o"],
+    };
+
+    const handleShortCuts = {
+        MOVE_NEXT_PAGE: (event: any) => {
+            console.log("next");
+        },
+        MOVE_PREV_PAGE: (event: any) => {
+            console.log("prev");
+        },
+        OPEN_PRODUCTIVITY_O: (event: any) => {
+            console.log("o");
+        },
+    };
+
     return (
-        <nav>
-            <div className="navbar">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <label
-                            tabIndex={0}
-                            className="btn-ghost btn-circle btn"
+        <>
+            <GlobalHotKeys
+                keyMap={shortCutsKeymap}
+                handlers={handleShortCuts}
+            />
+            <nav>
+                <div className="navbar">
+                    <div className="navbar-start">
+                        <div className="dropdown">
+                            <label
+                                tabIndex={0}
+                                className="btn-ghost btn-circle btn"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M4 6h16M4 12h16M4 18h7"
+                                    />
+                                </svg>
+                            </label>
+
+                            <ul
+                                tabIndex={0}
+                                className="dropdown-content menu rounded-box menu-compact mt-2 w-52 bg-base-100 p-2 shadow"
+                            >
+                                <li className="menu-title mt-2">
+                                    <span>User</span>
+                                </li>
+                                <li>
+                                    <Link href="/app/">App</Link>
+                                </li>
+                                <li>
+                                    <Link href="/app/settings">Settings</Link>
+                                </li>
+                                <li className="menu-title mt-2">
+                                    <span>Auth</span>
+                                </li>
+                                <li>
+                                    <Link href={"/login"}>Login</Link>
+                                </li>
+
+                                <li className="menu-title mt-2">
+                                    <span>Pages</span>
+                                </li>
+                                <li>
+                                    <Link href="/">Home</Link>
+                                </li>
+                                <li>
+                                    <Link href="/about">About</Link>
+                                </li>
+
+                                <li className="menu-title mt-2">
+                                    <span>API</span>
+                                </li>
+                                <li>
+                                    <Link href="/users">Users List</Link>
+                                </li>
+                                <li>
+                                    <a href="/api/users">Users API</a>
+                                </li>
+                                <li>
+                                    <a href="/api/seed">Seed database</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="">
+                            <Link
+                                className="btn-ghost btn text-xl normal-case "
+                                href={"/"}
+                            >
+                                {BRAND.name}
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="navbar-center w-max flex-1 bg-base-100"></div>
+
+                    <div className="navbar-end">
+                        {/* NOTE: Show btn if user is signed in. */}
+                        {session?.user ? (
+                            <>
+                                <AddTaskModal />
+                                <PopoverProductivity />
+                                <button
+                                    data-tip=""
+                                    className={
+                                        "btn-ghost tooltip tooltip-bottom btn-circle btn hidden items-center normal-case before:inline-flex before:py-2 before:pr-[3.9ch] before:pl-[1ch] before:text-xs before:leading-none before:content-['Open_Productivity'] after:ml-[6ch] after:mt-[1.1ch] after:flex after:kbd after:text-xs after:leading-none after:content-['O'] after:kbd-sm xl:grid"
+                                    }
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                        className="h-6 w-6"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"
+                                        />
+                                    </svg>
+                                </button>
+                            </>
+                        ) : (
+                            <></>
+                        )}
+                        <button
+                            className="btn-ghost tooltip tooltip-bottom btn-circle btn grid normal-case"
+                            data-tip="Search"
+                        >
+                            <SearchInactiveIcon className="h-5 w-5" />
+                        </button>
+
+                        <button
+                            className="btn-ghost tooltip tooltip-bottom btn-circle btn grid normal-case"
+                            data-tip="Notifications"
+                        >
+                            <div className="indicator">
+                                <BellActiveIcon className="h-5 w-5" />
+                                <span className="badge badge-primary badge-xs indicator-item"></span>
+                            </div>
+                        </button>
+
+                        <button
+                            data-tip="Settings"
+                            className="tooltip tooltip-bottom hover:btn-link"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
                                 fill="none"
                                 viewBox="0 0 24 24"
+                                strokeWidth={1.5}
                                 stroke="currentColor"
+                                className="h-6 w-6"
                             >
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 6h16M4 12h16M4 18h7"
+                                    d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
                                 />
                             </svg>
-                        </label>
+                            {/* <MoreInactiveIcon className="inline-block h-5 w-5  stroke-current" /> */}
+                        </button>
 
-                        <ul
-                            tabIndex={0}
-                            className="dropdown-content menu rounded-box menu-compact mt-2 w-52 bg-base-100 p-2 shadow"
-                        >
-                            <li className="menu-title mt-2">
-                                <span>User</span>
-                            </li>
-                            <li>
-                                <Link href="/app/">App</Link>
-                            </li>
-                            <li>
-                                <Link href="/app/settings">Settings</Link>
-                            </li>
-                            <li className="menu-title mt-2">
-                                <span>Auth</span>
-                            </li>
-                            <li>
-                                <Link href={"/login"}>Login</Link>
-                            </li>
-
-                            <li className="menu-title mt-2">
-                                <span>Pages</span>
-                            </li>
-                            <li>
-                                <Link href="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link href="/about">About</Link>
-                            </li>
-
-                            <li className="menu-title mt-2">
-                                <span>API</span>
-                            </li>
-                            <li>
-                                <Link href="/users">Users List</Link>
-                            </li>
-                            <li>
-                                <a href="/api/users">Users API</a>
-                            </li>
-                            <li>
-                                <a href="/api/seed">Seed database</a>
-                            </li>
-                        </ul>
+                        {/* Show loading if status is loading, if user exists show user name else show Sign In button. */}
+                        {status === "loading" ? (
+                            <>Loading</>
+                        ) : (
+                            ((): JSX.Element =>
+                                session?.user ? (
+                                    <MenuDropdown>
+                                        <>
+                                            <div className="h-auto w-9 object-cover">
+                                                <UserInitialsAvatar
+                                                    firstName={
+                                                        session.user.name
+                                                    }
+                                                    secondName={""}
+                                                />
+                                            </div>
+                                        </>
+                                    </MenuDropdown>
+                                ) : (
+                                    <Link href={"/login"}>
+                                        <button className="btn-outline btn-sm btn grid w-max  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary">
+                                            <FaRegUserCircle className="text-lg" />
+                                            <span>Sign In</span>
+                                        </button>
+                                    </Link>
+                                ))()
+                        )}
                     </div>
-                    <Link
-                        className="btn-ghost btn text-xl normal-case lg:hidden"
-                        href={"/"}
-                    >
-                        {BRAND.name}
-                    </Link>
                 </div>
-
-                <div className="navbar-center hidden lg:flex">
-                    <Link
-                        className="btn-ghost btn text-xl normal-case"
-                        href={"/"}
-                    >
-                        {BRAND.name}
-                    </Link>
-                </div>
-
-                <div className="navbar-end">
-                    <button
-                        className="btn-ghost tooltip tooltip-bottom btn-circle btn grid normal-case"
-                        data-tip="Search"
-                    >
-                        <SearchInactiveIcon className="h-5 w-5" />
-                    </button>
-
-                    <button
-                        className="btn-ghost tooltip tooltip-bottom btn-circle btn grid normal-case"
-                        data-tip="Notifications"
-                    >
-                        <div className="indicator">
-                            <BellActiveIcon className="h-5 w-5" />
-                            <span className="badge badge-primary badge-xs indicator-item"></span>
-                        </div>
-                    </button>
-
-                    <button
-                        data-tip="Settings"
-                        className="tooltip tooltip-bottom hover:btn-link"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="h-6 w-6"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
-                            />
-                        </svg>
-                        {/* <MoreInactiveIcon className="inline-block h-5 w-5  stroke-current" /> */}
-                    </button>
-
-                    {/* Show loading if status is loading, if user exists show user name else show Sign In button. */}
-                    {status === "loading" ? (
-                        <>Loading</>
-                    ) : (
-                        ((): JSX.Element =>
-                            session?.user ? (
-                                <MenuDropdown>
-                                    <>
-                                        <div className="h-auto w-9 object-cover">
-                                            <UserInitialsAvatar
-                                                firstName={session.user.name}
-                                                secondName={""}
-                                            />
-                                        </div>
-                                    </>
-                                </MenuDropdown>
-                            ) : (
-                                <Link href={"/login"}>
-                                    <button className="btn-outline btn-sm btn grid w-max  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary">
-                                        <FaRegUserCircle className="text-lg" />
-                                        <span>Sign In</span>
-                                    </button>
-                                </Link>
-                            ))()
-                    )}
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </>
     );
 }
 
