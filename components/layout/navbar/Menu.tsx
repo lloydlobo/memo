@@ -3,7 +3,7 @@ import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { Fragment } from "react";
 import { toast } from "react-toastify";
-import { getError, toastError } from "../../lib/utils/getError";
+import { getError, toastError } from "../../../lib/utils/getError";
 import { DropdownLink } from "./DropdownLink";
 
 /**

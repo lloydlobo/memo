@@ -2,8 +2,8 @@ import Link from "next/link";
 import React, { SVGProps } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
-import { BRAND } from "../../lib/constants";
-import UserInitialsAvatar from "../user/UserInitialsAvatar";
+import { BRAND } from "../../../lib/constants";
+import UserInitialsAvatar from "../../user/UserInitialsAvatar";
 import MenuDropdown from "./Menu";
 
 export default function Navbar({ status, session }: any): JSX.Element {

@@ -3,6 +3,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import User from "../../../models/User";
 // import GithubProvider from "next-auth/providers/github";
+import db from "../../../lib/api/db";
 
 /**
  * authOptions() contains the dynamic route handler for

@@ -4,9 +4,9 @@ import React, { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LoginForm } from "./auth/LoginForm";
-import { Footer } from "./footer/Footer";
-import Navbar from "./navbar/Navbar";
-import { NavbarBottom } from "./navbar/NavbarBottom";
+import { Footer } from "./layout/footer/Footer";
+import Navbar from "./layout/navbar/Navbar";
+import { NavbarBottom } from "./layout/navbar/NavbarBottom";
 import { ToastTopStart } from "./toast/ToastTopStart";
 
 type Props = {
