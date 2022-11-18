@@ -3,6 +3,11 @@ import mongoose from "mongoose";
 // https://youtu.be/_IBlyR5mRzA?t=8028
 const connection = {};
 
+/**
+ * Connect to the database.
+ *
+ * @return {Promise}
+ */
 async function connect() {
   if (connection.isConnected) {
     console.log("db: already connected");
@@ -26,6 +31,11 @@ async function connect() {
   connection.isConnected = db.connections[0].readyState;
 }
 
+/**
+ * Disconnect from the database.
+ *
+ * @returns {Promise<void>}
+ */
 async function disconnect() {
   if (connection.isConnected) {
     if (process.env.NODE_ENV === "production") {

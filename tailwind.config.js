@@ -4,27 +4,33 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ["var(--font-inter)", ...fontFamily.sans],
-      },
+    content: [
+        "./pages/**/*.{js,ts,jsx,tsx}",
+        "./components/**/*.{js,ts,jsx,tsx}",
+    ],
+    // TODO: Add gradients....
+    // https://hypercolor.dev/
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ["var(--font-inter)", ...fontFamily.sans],
+            },
+        },
     },
-  },
-  plugins: [require("daisyui")],
-  // daisyUI config (optional)
-  daisyui: {
-    styled: true,
-    themes: ["night", "bumblebee", "dracula"],
-    base: true,
-    utils: true,
-    logs: true,
-    rtl: false,
-    prefix: "",
-    darkTheme: "dracula", // Overwrite default dark theme for prefers system.
-  },
+    plugins: [
+        require("daisyui"),
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography')
+    ],
+    // daisyUI config (optional)
+    daisyui: {
+        styled: true,
+        themes: ["night", "bumblebee", "dracula"],
+        base: true,
+        utils: true,
+        logs: true,
+        rtl: false,
+        prefix: "",
+        darkTheme: "dracula", // Overwrite default dark theme for prefers system.
+    },
 };
