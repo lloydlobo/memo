@@ -38,21 +38,21 @@ export const ButtonKbdTooltip: React.FC<{}> = ({
     }, []);
 
     return (
-        <div className="">
-            <div className="pb-16">
+        <div className="relative">
+            <div className="h-12 cursor-pointer ">
                 <span className="relative mb-4 grid bg-base-300">
                     <button
                         ref={refButton}
-                        className="btn-ghost btn z-10 grid w-fit"
+                        className="btn-ghost btn z-10 grid w-fit p-0"
                     >
                         {children}
                     </button>
                     {showTooltip ? (
                         <span
                             aria-hidden="true"
-                            className="absolute -inset-1 -z-10 w-full origin-center -translate-x-1/2 pt-16"
+                            className="absolute -inset-1 -left-full px-0 pt-16"
                         >
-                            <span className=" btn-ghost btn grid w-max grid-flow-col items-center gap-3 place-self-center rounded-md bg-base-300 py-1 px-3 text-center normal-case">
+                            <span className="btn-ghost btn grid w-max grid-flow-col items-center gap-3 place-self-center rounded-md bg-base-100 py-0 px-3 text-center normal-case ring-1 ring-pink-900 ring-opacity-80">
                                 {dataTip}
                                 <span className="kbd btn-sm btn-square">
                                     {dataTipKbd}
