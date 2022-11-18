@@ -38,8 +38,8 @@ export const ButtonKbdTooltip: React.FC<{}> = ({
     }, []);
 
     return (
-        <div className="grid">
-            <div className="place-self-center pt-4 pb-16">
+        <div className="">
+            <div className="pb-16">
                 <span className="relative mb-4 grid bg-base-300">
                     <button
                         ref={refButton}
@@ -54,7 +54,7 @@ export const ButtonKbdTooltip: React.FC<{}> = ({
                         >
                             <span className=" btn-ghost btn grid w-max grid-flow-col items-center gap-3 place-self-center rounded-md bg-base-300 py-1 px-3 text-center normal-case">
                                 {dataTip}
-                                <span className="kbd btn-square btn-sm">
+                                <span className="kbd btn-sm btn-square">
                                     {dataTipKbd}
                                 </span>
                             </span>

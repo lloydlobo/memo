@@ -45,7 +45,7 @@ export function PopoverProductivity() {
                             onClick={handleOpenModal}
                             className={`
                 ${open ? "" : "text-opacity-90"}
-                group btn-ghost btn-circle btn inline-flex items-center rounded-md bg-transparent bg-orange-700 px-3 py-2 text-base font-medium  hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                group btn-ghost btn-circle btn inline-flex items-center rounded-md  px-3 py-2 text-base font-medium  hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

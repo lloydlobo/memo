@@ -169,46 +169,22 @@ const Home = () => (
             </section>
 
             <section>
-                <div className="grid place-content-center space-y-4">
-                    <blockquote className="text-center text-2xl font-semibold italic dark:text-slate-900">
-                        When you look
-                        <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-pink-500">
-                            <span className="relative text-white">annoyed</span>
-                        </span>
-                        all the time, people think that you're busy.
-                    </blockquote>
-                    <div className="nopseudo">
-                        <blockquote className="text-center text-2xl font-semibold italic dark:text-slate-900">
-                            When you look
-                            <span className="relative">
-                                <span
-                                    className="absolute -inset-1 block -skew-y-3 bg-pink-500"
-                                    aria-hidden="true"
-                                ></span>
-                                <span className="relative text-white">
-                                    annoyed
-                                </span>
-                            </span>
-                            all the time, people think that you're busy.
-                        </blockquote>
-                    </div>
-                    <ButtonKbdTooltip text="Add Task" kbd="Q">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="h-6 w-6"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"
-                            />
-                        </svg>
-                    </ButtonKbdTooltip>
-                </div>
+                <ButtonKbdTooltip dataTip="Add Task" dataTipKbd="Q">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="h-6 w-6"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"
+                        />
+                    </svg>
+                </ButtonKbdTooltip>
             </section>
         </main>
     </Layout>

@@ -9,6 +9,7 @@ import UserInitialsAvatar from "../../user/UserInitialsAvatar";
 import MenuDropdown from "./Menu";
 import { GlobalHotKeys } from "react-hotkeys";
 import { PopoverProductivity } from "./PopoverProductivity";
+import { ButtonKbdTooltip } from "../../buttons/ButtonKbdTooltip";
 
 export default function Navbar({ status, session }: any): JSX.Element {
     const shortCutsKeymap = {
@@ -120,6 +121,7 @@ export default function Navbar({ status, session }: any): JSX.Element {
                         {session?.user ? (
                             <>
                                 <AddTaskModal />
+
                                 <PopoverProductivity />
                                 <button
                                     data-tip=""
