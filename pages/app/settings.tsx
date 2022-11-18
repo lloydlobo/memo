@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 
-export default function Settings() {
+export default function AppSettings() {
     return (
         <Layout title="About">
             <main>
@@ -15,10 +15,10 @@ export default function Settings() {
     );
 }
 
-// Settings?.auth = true
+AppSettings.auth = true;
 // Because of how _app is written, it won't unnecessarily contact the /api/auth/session endpoint for pages that do not require authentication.
-Settings.auth = {
-    role: "admin",
-    loading: <Layout title={"loading | Settings"}>loading</Layout>,
-    unauthorized: "/login-with-different-user", // redirect to  this url.
-};
+// Settings.auth = {
+//     role: "admin",
+//     loading: <Layout title={"loading | Settings"}>loading</Layout>,
+//     unauthorized: "/login-with-different-user", // redirect to  this url.
+// };

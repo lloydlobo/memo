@@ -32,7 +32,10 @@ export function LoginForm(): JSX.Element {
      */
     useEffect(() => {
         if (session?.user) {
-            router.push((redirect as unknown as URL) || "/");
+            // Source: https://stackoverflow.com/a/37764765 .
+            setTimeout(() => {
+                router.push((redirect as unknown as URL) || "/app");
+            }, 2000);
         }
     }, [router, session, redirect]);
 
@@ -47,11 +50,13 @@ export function LoginForm(): JSX.Element {
         try {
             // Using credentials instead of google, github, etc.
             const result = await signIn("credentials", {
-                redirect: false,
+                redirect: true,
                 email,
                 password,
             });
             if (result?.error) toast.error(result.error);
+            toast.success(`Logged in with ${email}`);
+            //find sleep utility function javascript few seconds.
         } catch (err) {
             toast.error(getError(err as toastError));
         }

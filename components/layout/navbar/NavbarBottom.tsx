@@ -35,7 +35,7 @@ export function NavbarBottom() {
                 </button>
 
                 <button
-                    onClick={() => router.push("/login?redirect=/tasks")}
+                    onClick={() => router.push("/login?redirect=/app")}
                     className="text-secondary"
                 >
                     <svg

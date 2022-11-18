@@ -37,6 +37,15 @@ export default function Navbar({ status, session }: any): JSX.Element {
                             className="dropdown-content menu rounded-box menu-compact mt-2 w-52 bg-base-100 p-2 shadow"
                         >
                             <li className="menu-title mt-2">
+                                <span>User</span>
+                            </li>
+                            <li>
+                                <Link href="/app/">App</Link>
+                            </li>
+                            <li>
+                                <Link href="/app/settings">Settings</Link>
+                            </li>
+                            <li className="menu-title mt-2">
                                 <span>Auth</span>
                             </li>
                             <li>
@@ -64,12 +73,6 @@ export default function Navbar({ status, session }: any): JSX.Element {
                             </li>
                             <li>
                                 <a href="/api/seed">Seed database</a>
-                            </li>
-                            <li className="menu-title mt-2">
-                                <span>Settings</span>
-                            </li>
-                            <li>
-                                <Link href="/settings">Settings</Link>
                             </li>
                         </ul>
                     </div>
