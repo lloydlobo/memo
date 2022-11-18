@@ -1,9 +1,8 @@
 import { Inter } from "@next/font/google";
 import { SessionProvider, useSession } from "next-auth/react";
-import "../styles/global.css";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import { ReactNode } from "react";
+import "../styles/global.css";
 
 // https://github.com/vercel/mongodb-starter/blob/main/pages/_app.tsx
 const inter = Inter({

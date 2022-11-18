@@ -8,23 +8,23 @@
 *,
 *::after,
 *::before {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 html,
 body {
-  color-scheme: dark;
+    color-scheme: dark;
 }
 
 .wrapper {
-  display: grid;
-  min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 1fr;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
 }
 
 main {
-  @apply grid;
+    @apply grid;
 }

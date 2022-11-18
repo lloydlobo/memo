@@ -1,13 +1,13 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { LoginForm } from "./auth/LoginForm";
+import { Footer } from "./footer/Footer";
 import Navbar from "./navbar/Navbar";
 import { NavbarBottom } from "./navbar/NavbarBottom";
 import { ToastTopStart } from "./toast/ToastTopStart";
-import "react-toastify/dist/ReactToastify.css";
-import { Footer } from "./footer/Footer";
 
 type Props = {
     children?: ReactNode;

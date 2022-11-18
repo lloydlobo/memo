@@ -1,12 +1,12 @@
 import Link from "next/link";
 import React, { SVGProps } from "react";
-import { brand } from "../../utils/brand";
 import { FaRegUserCircle } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
-import MenuDropdown from "./Menu";
+import { BRAND } from "../../lib/constants";
 import UserInitialsAvatar from "../user/UserInitialsAvatar";
+import MenuDropdown from "./Menu";
 
-export default function Navbar({ status, session }: any) {
+export default function Navbar({ status, session }: any): JSX.Element {
     return (
         <nav>
             <div className="navbar">
@@ -77,7 +77,7 @@ export default function Navbar({ status, session }: any) {
                         className="btn-ghost btn text-xl normal-case lg:hidden"
                         href={"/"}
                     >
-                        {brand.name}
+                        {BRAND.name}
                     </Link>
                 </div>
 
@@ -86,7 +86,7 @@ export default function Navbar({ status, session }: any) {
                         className="btn-ghost btn text-xl normal-case"
                         href={"/"}
                     >
-                        {brand.name}
+                        {BRAND.name}
                     </Link>
                 </div>
 

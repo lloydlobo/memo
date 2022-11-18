@@ -1,11 +1,9 @@
-import NextAuth from "next-auth";
-import GithubProvider from "next-auth/providers/github";
-import CredentialsProvider from "next-auth/providers/credentials";
-import db from "../../../utils/db";
-import User from "../../../models/User";
 import bcryptjs from "bcryptjs";
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import User from "../../../models/User";
+// import GithubProvider from "next-auth/providers/github";
 
-// FIXME: Type error: Type '(credentials: Record<string, string> | undefined) => Promise<{ _id?: undefined; name?: undefined; email?: undefined; image?: undefined; isAdmin?: undefined; } | { _id: any; name: any; email: any; image: string; isAdmin: any; }>' is not assignable to type '(credentials: Record<string, string> | undefined, req: Pick<RequestInternal, "body" | "query" | "headers" | "method">) => Awaitable<User | null>'.
 /**
  * authOptions() contains the dynamic route handler for
  * NextAuth.js which also contains all global NextAuth.js configurations.

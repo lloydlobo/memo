@@ -5,28 +5,28 @@
 // import { User } from 'path/to/interfaces';
 
 export type User = {
-  id: number;
-  name: string;
+    id: number;
+    name: string;
 };
 
 export type UserData = {
-  id: number;
-  uuid: string;
-  name: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
+    id: number;
+    uuid: string;
+    name: string;
+    email: string;
+    password: string;
+    isAdmin: boolean;
 };
 
 export type TaskData = {
-  id: number;
-  uuid: string;
-  name: string;
-  dueDate: string;
-  description: string;
+    id: number;
+    uuid: string;
+    name: string;
+    dueDate: string;
+    description: string;
 };
 
 export type DataType = {
-  users: UserData[];
-  tasks: TaskData[];
+    users: UserData[];
+    tasks: TaskData[];
 };

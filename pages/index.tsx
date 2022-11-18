@@ -1,10 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import Layout from "../components/Layout";
-import { brand } from "../utils/brand";
+import { BRAND } from "../lib/constants";
 
 const Home = () => (
-    <Layout title={`Home | ${brand.name}`}>
+    <Layout title={`Home | ${BRAND.name}`}>
         <main>
             <section id="hero-section z-0">
                 <div

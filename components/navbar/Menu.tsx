@@ -1,12 +1,10 @@
-import React from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useRef, useState } from "react";
-import { FaRegUserCircle } from "react-icons/fa";
-import { DropdownLink } from "./DropdownLink";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { signIn, signOut, useSession } from "next-auth/react";
+import React, { Fragment } from "react";
 import { toast } from "react-toastify";
-import { getError, toastError } from "../../utils/getError";
+import { getError, toastError } from "../../lib/utils/getError";
+import { DropdownLink } from "./DropdownLink";
 
 /**
  * MenuDropdown component for the user auth client ui in navbar.
@@ -40,7 +38,7 @@ export default function MenuDropdown({ children }: any): JSX.Element {
                 );
             });
 
-            // return result.url;
+            // TODO: return result.url
         } catch (err) {
             toast.error(getError(err as toastError));
         }
