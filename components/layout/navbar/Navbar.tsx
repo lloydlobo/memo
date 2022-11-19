@@ -38,7 +38,7 @@ export default function Navbar({ status, session }: any): JSX.Element {
                 handlers={handleShortCuts}
             />
             <nav>
-                <div className="navbar">
+                <div className="navbar bg-base-300 backdrop-blur-sm">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <label

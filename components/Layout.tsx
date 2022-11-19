@@ -18,9 +18,11 @@ type Props = {
 function Layout({
     children,
     title = "This is the default title",
+    footer = "",
 }: {
     children: ReactNode;
     title: string;
+    footer: string;
 }): JSX.Element {
     // After setting up  SessionProvided in _app.tsx...
     // status flag shows loading of session.
@@ -65,7 +67,7 @@ function Layout({
                 <>{children}</>
             )}
 
-            <footer>
+            <footer className={footer}>
                 <div className="sm:hidden">
                     <NavbarBottom />
                 </div>
