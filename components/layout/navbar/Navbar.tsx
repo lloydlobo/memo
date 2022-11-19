@@ -45,7 +45,7 @@ export default function Navbar({ status, session }: any): JSX.Element {
                                 tabIndex={0}
                                 className="btn-ghost btn btn-circle"
                             >
-                                <HamburgerIcon className="h-auto w-5" />
+                                <HamburgerIcon className="z-10 h-auto w-5" />
                             </label>
 
                             <ul
