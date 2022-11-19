@@ -14,4 +14,5 @@ export { default as LoadingDots } from "./loading-dots";
 export { default as SearchIcon } from "./search";
 export { default as UploadIcon } from "./upload";
 export { default as XIcon } from "./x";
+export { default as HamburgerIcon } from "./hamburger";
 export { default as XCircleIcon } from "./x-circle";

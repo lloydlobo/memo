@@ -1,19 +1,23 @@
 import React from "react";
+import ListView from "../../components/app/ListView";
 import { HeaderInbox } from "../../components/header/HeaderInbox";
 import Layout from "../../components/Layout";
+import LayoutApp from "../../components/LayoutApp";
 
 export default function AppIndex() {
     return (
         <Layout title="Inbox">
-            <main>
-                <section id="hero-section" className="w-full">
-                    {/*                     <div className="pt-[6px] pl-[15px] pb-[12px] pr-0 ">
-                        <div className="mx-8"> */}
-                    <HeaderInbox />
-                    {/*                         </div>
-                    </div> */}
-                </section>
-            </main>
+            <LayoutApp>
+                <main>
+                    {/* Add drawer here? or new layout LayoutApp? */}
+                    <section id="hero-section" className="grid">
+                        <div className="w-4/5 place-self-center">
+                            <HeaderInbox />
+                            <ListView />
+                        </div>
+                    </section>
+                </main>
+            </LayoutApp>
         </Layout>
     );
 }

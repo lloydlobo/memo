@@ -3,6 +3,7 @@ import Head from "next/head";
 import React, { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BRAND } from "../lib/constants";
 import { LoginForm } from "./auth/LoginForm";
 import { Footer } from "./layout/footer/Footer";
 import Navbar from "./layout/navbar/Navbar";
@@ -38,7 +39,9 @@ function Layout({
     return (
         <div className="wrapper">
             <Head>
-                <title>{title}</title>
+                <title>
+                    {title ? `${title}: ${BRAND.name}` : `${BRAND.name}`}
+                </title>
                 <meta charSet="utf-8" />
                 <meta
                     name="viewport"

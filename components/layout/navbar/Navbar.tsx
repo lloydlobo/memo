@@ -10,6 +10,7 @@ import MenuDropdown from "./Menu";
 import { GlobalHotKeys } from "react-hotkeys";
 import { PopoverProductivity } from "./PopoverProductivity";
 import { ButtonKbdTooltip } from "../../buttons/ButtonKbdTooltip";
+import { HamburgerIcon } from "../../icons";
 
 export default function Navbar({ status, session }: any): JSX.Element {
     const shortCutsKeymap = {
@@ -42,22 +43,9 @@ export default function Navbar({ status, session }: any): JSX.Element {
                         <div className="dropdown">
                             <label
                                 tabIndex={0}
-                                className="btn-ghost btn-circle btn"
+                                className="btn-ghost btn btn-circle"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M4 6h16M4 12h16M4 18h7"
-                                    />
-                                </svg>
+                                <HamburgerIcon className="h-auto w-5" />
                             </label>
 
                             <ul
@@ -126,7 +114,7 @@ export default function Navbar({ status, session }: any): JSX.Element {
                                 <button
                                     data-tip=""
                                     className={
-                                        "btn-ghost tooltip tooltip-bottom btn-circle btn hidden items-center normal-case before:inline-flex before:py-2 before:pr-[3.9ch] before:pl-[1ch] before:text-xs before:leading-none before:content-['Open_Productivity'] after:ml-[6ch] after:mt-[1.1ch] after:flex after:kbd after:text-xs after:leading-none after:content-['O'] after:kbd-sm xl:grid"
+                                        "btn-ghost btn tooltip tooltip-bottom btn-circle hidden items-center normal-case before:inline-flex before:py-2 before:pr-[3.9ch] before:pl-[1ch] before:text-xs before:leading-none before:content-['Open_Productivity'] after:ml-[6ch] after:mt-[1.1ch] after:flex after:kbd after:text-xs after:leading-none after:content-['O'] after:kbd-sm xl:grid"
                                     }
                                 >
                                     <svg
@@ -149,14 +137,14 @@ export default function Navbar({ status, session }: any): JSX.Element {
                             <></>
                         )}
                         <button
-                            className="btn-ghost tooltip tooltip-bottom btn-circle btn grid normal-case"
+                            className="btn-ghost btn tooltip tooltip-bottom btn-circle grid normal-case"
                             data-tip="Search"
                         >
                             <SearchInactiveIcon className="h-5 w-5" />
                         </button>
 
                         <button
-                            className="btn-ghost tooltip tooltip-bottom btn-circle btn grid normal-case"
+                            className="btn-ghost btn tooltip tooltip-bottom btn-circle grid normal-case"
                             data-tip="Notifications"
                         >
                             <div className="indicator">
@@ -206,7 +194,7 @@ export default function Navbar({ status, session }: any): JSX.Element {
                                     </MenuDropdown>
                                 ) : (
                                     <Link href={"/login"}>
-                                        <button className="btn-outline btn-sm btn grid w-max  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary">
+                                        <button className="btn-outline btn btn-sm grid w-max  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary">
                                             <FaRegUserCircle className="text-lg" />
                                             <span>Sign In</span>
                                         </button>
