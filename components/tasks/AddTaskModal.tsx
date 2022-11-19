@@ -3,11 +3,6 @@ import { ButtonKbdTooltip } from "../buttons/ButtonKbdTooltip";
 
 // "btn-ghost tooltip tooltip-bottom btn-circle btn hidden items-center normal-case before:inline-flex before:py-2 before:pr-[3.9ch] before:pl-[1ch] before:text-xs before:leading-none before:content-['Open_Productivity'] after:ml-[6ch] after:mt-[1.1ch] after:flex after:kbd after:text-xs after:leading-none after:content-['O'] after:kbd-sm xl:grid"
 export const AddTaskModal: React.FC<{}> = () => {
-    const style = {
-        primary: "btn-ghost btn-circle btn",
-        tooltip:
-            "btn-ghost text-center grid tooltip tooltip-bottom btn-circle btn normal-case before:inline-flex before:py-2 before:pr-[4.3ch] before:pl-[1ch] before:text-xs before:leading-none before:content-['Add_Task'] after:ml-[3.3ch] after:mt-[1.1ch] after:flex after:kbd after:text-xs after:leading-none after:content-['Q'] after:kbd-sm xl:grid",
-    };
     return (
         <>
             {/* The button to open modal */}
@@ -38,14 +33,14 @@ export const AddTaskModal: React.FC<{}> = () => {
             <input type="checkbox" id="my-modal-4" className="modal-toggle" />
             <label
                 htmlFor="my-modal-4"
-                className="modal cursor-pointer flex-col "
+                className="modal cursor-pointer flex-col"
             >
                 {/* PERF: remove modal-box to bypass overflow-y */}
                 <label
-                    className="4xl:modal-box card absolute top-[12vh] bg-base-300"
+                    className="4xl:modal-box card absolute top-[12vh] mx-2 bg-base-300 sm:mx-0"
                     htmlFor=""
                 >
-                    <div className="card-body grid shadow-none">
+                    <div className="card-body grid px-4 shadow-none sm:px-8">
                         <form
                             action="submit"
                             className="form-control w-full gap-4 "
@@ -66,7 +61,7 @@ export const AddTaskModal: React.FC<{}> = () => {
                             </div>
 
                             <div className="actions flex w-full items-center">
-                                <div className="primary-actions mr-auto flex-1 opacity-80">
+                                <div className="primary-actions mr-auto flex-1">
                                     <div title="due-date" className="dropdown">
                                         <label
                                             tabIndex={0}
@@ -134,7 +129,7 @@ export const AddTaskModal: React.FC<{}> = () => {
                                     </div>
                                 </div>
 
-                                <div className="secondary-actions ml-auto opacity-60">
+                                <div className="secondary-actions ml-auto">
                                     <div className="flex gap-6">
                                         <a>
                                             <svg
@@ -176,7 +171,7 @@ export const AddTaskModal: React.FC<{}> = () => {
                             <div className="flex">
                                 <div
                                     title="editor-feedback"
-                                    className="link-hover flex flex-1 cursor-pointer items-center opacity-60"
+                                    className="link-hover flex flex-1 cursor-pointer items-center"
                                 >
                                     <div className="stat-figure text-secondary">
                                         <svg
@@ -197,7 +192,10 @@ export const AddTaskModal: React.FC<{}> = () => {
                                 </div>
 
                                 <div className="btn-group-horizontal flex space-x-2">
-                                    <button className=" btn-ghost btn bg-base-100 text-sm brightness-110">
+                                    <button
+                                        type="button"
+                                        className=" btn-ghost btn bg-base-100 text-sm brightness-110"
+                                    >
                                         Cancel
                                     </button>
                                     <div
@@ -218,7 +216,7 @@ export const AddTaskModal: React.FC<{}> = () => {
                             </div>
                         </form>
                     </div>
-                    <progress className="progress relative h-0.5 w-[94%] place-self-center bg-gradient-to-tr from-primary via-secondary to-accent opacity-70 mix-blend-darken blur-sm"></progress>
+                    <progress className="progress relative h-0.5 w-[94%] place-self-center bg-gradient-to-tr from-primary via-secondary to-accent mix-blend-darken blur-sm"></progress>
                 </label>
             </label>
         </>
