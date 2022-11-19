@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../../components/Layout";
+import UserInitialsAvatar from "../../components/user/UserInitialsAvatar";
 
 export default function AppSettings() {
     return (
@@ -7,7 +8,10 @@ export default function AppSettings() {
             <main>
                 <section id="hero-section">
                     <div className="min-h-screen">
-                        <div className="hero">Settings</div>
+                        <div className="flex">
+                            <div className="hero">Settings</div>
+                            <UserInitialsAvatar />
+                        </div>
                     </div>
                 </section>
             </main>
