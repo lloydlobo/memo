@@ -11,15 +11,15 @@ export default function LayoutApp({
 
     return (
         <>
-            <div className={`flex`}>
+            <div className={`grid grid-cols-5`}>
                 <AppSidebar
                     toggleDrawer={toggleDrawer}
                     setToggleDrawer={setToggleDrawer}
-                    className="hidden"
+                    className="col-span-1 col-end-2"
                 />
                 <div
-                    className={`w-full ${
-                        toggleDrawer ? "col-span-4" : "col-span-5"
+                    className={`${
+                        toggleDrawer ? "col-span-4 col-start-2" : "col-span-5"
                     }`}
                 >
                     {/*     <!-- Page content here --> */}

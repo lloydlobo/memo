@@ -36,22 +36,27 @@ export default function AppSidebar({
 
     return (
         <>
-            <aside className={`bg-base-300 ${className}`}>
-                <div className={`absolute top-0 left-0 `}>
-                    <div className="h-screen">
-                        <div className="fixed top-2 left-1 z-50">
-                            <button
-                                onClick={() => setToggleDrawer(!toggleDrawer)}
-                                className="btn-ghost btn backdrop-blur-sm "
-                            >
-                                <HamburgerIcon className="h-5 w-5 opacity-80" />
-                            </button>
-                        </div>
+            <div className="fixed top-2 left-1 z-50">
+                <button
+                    onClick={() => setToggleDrawer(!toggleDrawer)}
+                    className="btn-ghost btn backdrop-blur-sm "
+                >
+                    <HamburgerIcon className="h-5 w-5 opacity-80" />
+                </button>
+            </div>
 
+            <aside
+                className={`w-fit bg-base-300 ${className} ${
+                    toggleDrawer ? "left-0 " : "absolute -left-48 "
+                }
+            
+            `}
+            >
+                <div className={`fixed top-0 left-0`}>
+                    <div className="">
                         <div
-                            className={`sticky top-16 z-20 -mb-16 h-full  w-fit bg-base-300 sm:relative ${
-                                toggleDrawer ? "left-0 " : "absolute -left-48 "
-                            }`}
+                            className={`sticky top-16 z-20 -mb-16 h-full  w-fit bg-base-300 sm:relative 
+                            ${toggleDrawer ? "left-0 " : "absolute -left-48 "}`}
                         >
                             <div className="sticky top-16 z-20 -mb-16 h-full  w-fit bg-base-300 sm:relative">
                                 <div className="h-fill absolute top-0 w-fit ">
