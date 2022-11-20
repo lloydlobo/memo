@@ -13,11 +13,11 @@ import React, { useEffect, useRef, useState } from "react";
  * @returns {JSX.Element}
  */
 // PERF: Can use {Component, props:{....}}
-export const ButtonKbdTooltip: React.FC<{}> = ({
+export function ButtonKbdTooltip({
     children,
     dataTip,
     dataTipKbd,
-}: any): JSX.Element => {
+}: any): JSX.Element {
     const refButton = useRef(null);
     const [showTooltip, setShowTooltip] = useState(false);
 
@@ -66,4 +66,4 @@ export const ButtonKbdTooltip: React.FC<{}> = ({
             </div>
         </div>
     );
-};
+}

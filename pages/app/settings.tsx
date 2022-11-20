@@ -4,7 +4,7 @@ import UserInitialsAvatar from "../../components/user/UserInitialsAvatar";
 
 export default function AppSettings() {
     return (
-        <Layout title="About">
+        <Layout title="About" footerStyle={""}>
             <main>
                 <section id="hero-section">
                     <div className="min-h-screen">

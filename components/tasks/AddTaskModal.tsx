@@ -8,7 +8,7 @@ export const AddTaskModal: React.FC<{}> = () => {
             {/* The button to open modal */}
             <ButtonKbdTooltip dataTip="Add Task" dataTipKbd="Q">
                 <label
-                    htmlFor="my-modal-4"
+                    htmlFor="my-modal"
                     className="w-full cursor-pointer rounded-md p-3 "
                     /* className={`${style.tooltip}`} */
                 >
@@ -30,11 +30,8 @@ export const AddTaskModal: React.FC<{}> = () => {
             </ButtonKbdTooltip>
 
             {/* Put this part before </body> tag */}
-            <input type="checkbox" id="my-modal-4" className="modal-toggle" />
-            <label
-                htmlFor="my-modal-4"
-                className="modal cursor-pointer flex-col"
-            >
+            <input type="checkbox" id="my-modal" className="modal-toggle" />
+            <label htmlFor="my-modal" className="modal cursor-pointer flex-col">
                 {/* PERF: remove modal-box to bypass overflow-y */}
                 <label
                     className="4xl:modal-box card absolute top-[12vh] mx-2 bg-base-300 sm:mx-0"
@@ -194,9 +191,9 @@ export const AddTaskModal: React.FC<{}> = () => {
                                 <div className="btn-group-horizontal z-50 flex space-x-2">
                                     <button
                                         type="button"
-                                        className=" btn-ghost btn bg-base-100 text-sm brightness-110"
+                                        className="btn-ghost btn modal-action bg-base-100 text-sm brightness-110"
                                     >
-                                        Cancel
+                                        <label htmlFor="my-modal">Cancel</label>
                                     </button>
                                     <div
                                         title="before-wrapper"

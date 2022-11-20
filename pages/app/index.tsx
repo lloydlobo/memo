@@ -6,7 +6,7 @@ import LayoutApp from "../../components/LayoutApp";
 
 export default function AppIndex() {
     return (
-        <Layout title="Inbox" footer={"hidden"}>
+        <Layout title="Inbox" footerStyle={"hidden"}>
             <LayoutApp>
                 <main>
                     {/* Add drawer here? or new layout LayoutApp? */}
