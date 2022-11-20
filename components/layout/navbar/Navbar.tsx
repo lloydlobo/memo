@@ -1,16 +1,16 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { SVGProps, useEffect, useState } from "react";
+import { GlobalHotKeys } from "react-hotkeys";
 import { FaRegUserCircle } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { BRAND } from "../../../lib/constants";
+import { ButtonKbdTooltip } from "../../buttons/ButtonKbdTooltip";
+import { HamburgerIcon } from "../../icons";
 import { AddTaskModal } from "../../tasks/AddTaskModal";
 import UserInitialsAvatar from "../../user/UserInitialsAvatar";
 import MenuDropdown from "./Menu";
-import { GlobalHotKeys } from "react-hotkeys";
 import { PopoverProductivity } from "./PopoverProductivity";
-import { ButtonKbdTooltip } from "../../buttons/ButtonKbdTooltip";
-import { HamburgerIcon } from "../../icons";
 
 export default function Navbar({ status, session }: any): JSX.Element {
     const shortCutsKeymap = {
@@ -38,14 +38,14 @@ export default function Navbar({ status, session }: any): JSX.Element {
                 handlers={handleShortCuts}
             />
             <nav>
-                <div className="navbar bg-base-300 backdrop-blur-sm">
+                <div className="navbar bg-base-300/70 backdrop-blur-sm">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <label
                                 tabIndex={0}
                                 className="btn-ghost btn btn-circle"
                             >
-                                <HamburgerIcon className="z-10 h-auto w-5" />
+                                <HamburgerIcon className="h-auto w-5" />
                             </label>
 
                             <ul

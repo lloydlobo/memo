@@ -11,7 +11,7 @@ export default function AppIndex() {
                 <main>
                     {/* Add drawer here? or new layout LayoutApp? */}
                     <section id="hero-section" className="grid">
-                        <div className="w-4/5 place-self-center">
+                        <div className=" place-self-center">
                             <HeaderInbox />
                             <ListView />
                         </div>

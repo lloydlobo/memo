@@ -38,7 +38,7 @@ export default function ListView() {
                                                 aria-label="expand"
                                                 aria-expanded="false"
                                                 data-action-hint="task-toggle-collapse"
-                                                className="arrow right btn btn-ghost btn-square"
+                                                className="arrow right btn-ghost btn btn-square"
                                             >
                                                 <svg width="24" height="24">
                                                     <path
@@ -56,7 +56,7 @@ export default function ListView() {
                                                 aria-label="Mark task as complete"
                                                 aria-describedby="task-9876543210-content"
                                                 data-action-hint="task-complete"
-                                                className="arrow right btn btn-ghost btn-square"
+                                                className="arrow right btn-ghost btn btn-square"
                                             >
                                                 <div className="checkbox rounded-full">
                                                     <svg width="24" height="24">
@@ -69,7 +69,7 @@ export default function ListView() {
                                             </button>
                                         </div>
                                         <button
-                                            className="checkbox btn-ghost btn-square"
+                                            className="btn-ghost checkbox btn-square"
                                             type="button"
                                             role={"checkbox"}
                                             aria-hidden="false"
@@ -149,7 +149,7 @@ export default function ListView() {
                                                     data-action-hint="task-comment"
                                                     href="/app/project/9876543210/task/1234567890?intent=reply"
                                                     tabIndex={0}
-                                                    className="btn btn-ghost"
+                                                    className="btn-ghost btn"
                                                 >
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -170,7 +170,7 @@ export default function ListView() {
                                                     data-testid="more_menu"
                                                     data-action-hint="task-overflow-menu"
                                                     aria-label="More task actions"
-                                                    className="btn btn-ghost btn-square"
+                                                    className="btn-ghost btn btn-square"
                                                     tabIndex={0}
                                                 >
                                                     <svg width="15" height="3">
@@ -220,7 +220,7 @@ export default function ListView() {
                             </ul>
                         </section>
                         <button
-                            className="btn btn-ghost opacity-5"
+                            className="btn-ghost btn opacity-5"
                             type="button"
                         >
                             ::before Add task ::after

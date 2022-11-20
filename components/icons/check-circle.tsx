@@ -1,20 +1,18 @@
-/**
- * HamburgerIcon for navbar menu.
- *
- * @param className
- * @returns {JSX.Element}
- */
-export default function HamburgerIcon({ className }: { className?: string }) {
+import React from "react";
+
+export default function CheckCircleIcon({
+    className,
+}: { className?: string } = {}): JSX.Element {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={className}
-            height={24}
-            width={24}
             fill="none"
             viewBox="0 0 24 24"
+            strokeWidth={1.5}
             stroke="currentColor"
-            strokeWidth="1.5"
+            className={className}
+            width="24"
+            height="24"
             strokeLinecap="round"
             strokeLinejoin="round"
             shapeRendering="geometricPrecision"
@@ -22,8 +20,7 @@ export default function HamburgerIcon({ className }: { className?: string }) {
             <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h7"
+                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
         </svg>
     );

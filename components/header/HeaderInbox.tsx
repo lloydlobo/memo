@@ -6,6 +6,7 @@ import {
     InboxIcon,
 } from "../icons";
 
+//
 export function HeaderInbox({ projectName = "Inbox" }) {
     return (
         <header

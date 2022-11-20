@@ -11,28 +11,15 @@ export default function LayoutApp({
 
     return (
         <>
-            <div className={`grid w-full grid-cols-5`}>
+            <div className={`flex`}>
                 <AppSidebar
                     toggleDrawer={toggleDrawer}
                     setToggleDrawer={setToggleDrawer}
-                    className={`bg-base-300/70 ${
-                        toggleDrawer ? "left-0 " : "absolute -left-48 "
-                    }`}
+                    className="hidden"
                 />
-                <div className="absolute top-1 left-1 h-full ">
-                    <div className="sticky top-1 z-50">
-                        <button
-                            onClick={() => setToggleDrawer(!toggleDrawer)}
-                            className="btn-ghost btn backdrop-blur-sm "
-                        >
-                            <HamburgerIcon className="h-5 w-5 opacity-80" />
-                        </button>
-                    </div>
-                </div>
-
                 <div
-                    className={`${
-                        toggleDrawer ? "col-span-4" : "col-span-full"
+                    className={`w-full ${
+                        toggleDrawer ? "col-span-4" : "col-span-5"
                     }`}
                 >
                     {/*     <!-- Page content here --> */}
