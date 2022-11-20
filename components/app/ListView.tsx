@@ -4,7 +4,7 @@ export default function ListView() {
     return (
         <div
             className="listbox pt-5 pl-4 pb-3 pr-0"
-            aria-aria-multiselectable="true"
+            /* aria-aria-multiselectable="true" */
             data-selection-empty
             tabIndex={-1}
         >
@@ -109,7 +109,7 @@ export default function ListView() {
                                                     <svg width="24" height="24">
                                                         <g
                                                             fill="none"
-                                                            fill-rule="evenodd"
+                                                            fillRule="evenodd"
                                                         >
                                                             <path
                                                                 fill="currentColor"
@@ -138,8 +138,8 @@ export default function ListView() {
                                                         xmlns="http://www.w3.org/2000/svg"
                                                     >
                                                         <path
-                                                            fill-rule="evenodd"
-                                                            clip-rule="evenodd"
+                                                            fillRule="evenodd"
+                                                            clipRule="evenodd"
                                                             d="M18 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2zM5 6a1 1 0 011-1h12a1 1 0 011 1v12a1 1 0 01-1 1H6a1 1 0 01-1-1V6zm12 10a1 1 0 11-2 0 1 1 0 012 0zM7 8a.5.5 0 000 1h10a.5.5 0 000-1H7z"
                                                             fill="currentColor"
                                                         ></path>
@@ -160,7 +160,7 @@ export default function ListView() {
                                                     >
                                                         <path
                                                             fill="currentColor"
-                                                            fill-rule="nonzero"
+                                                            fillRule="nonzero"
                                                             d="M11.707 20.793A1 1 0 0 1 10 20.086V18H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.5l-2.793 2.793zM11 20.086L14.086 17H19a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h6v3.086z"
                                                         ></path>
                                                     </svg>
@@ -178,7 +178,7 @@ export default function ListView() {
                                                         <path
                                                             d="M1.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
                                                             fill="currentColor"
-                                                            fill-rule="evenodd"
+                                                            fillRule="evenodd"
                                                         ></path>
                                                     </svg>
                                                 </button>
@@ -211,7 +211,7 @@ export default function ListView() {
                                                 <path
                                                     d="M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z"
                                                     fill="currentColor"
-                                                    fill-rule="evenodd"
+                                                    fillRule="evenodd"
                                                 ></path>
                                             </svg>
                                         </span>

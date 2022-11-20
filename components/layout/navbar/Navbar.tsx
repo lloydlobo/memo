@@ -1,11 +1,9 @@
-import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React, { SVGProps, useEffect, useState } from "react";
+import React, { SVGProps } from "react";
 import { GlobalHotKeys } from "react-hotkeys";
 import { FaRegUserCircle } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { BRAND } from "../../../lib/constants";
-import { ButtonKbdTooltip } from "../../buttons/ButtonKbdTooltip";
 import { HamburgerIcon } from "../../icons";
 import { AddTaskModal } from "../../tasks/AddTaskModal";
 import UserInitialsAvatar from "../../user/UserInitialsAvatar";
@@ -77,12 +75,25 @@ export default function Navbar({ status, session }: any): JSX.Element {
                                 <li>
                                     <Link href="/about">About</Link>
                                 </li>
-
+                                <li className="menu-title mt-2">
+                                    <span>Client Side</span>
+                                </li>
+                                <li>
+                                    <Link href="/tasks">Tasks List</Link>
+                                </li>
+                                <li>
+                                    <Link href="/tasks/server">
+                                        Tasks Server List
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/users">Users List</Link>
+                                </li>
                                 <li className="menu-title mt-2">
                                     <span>API</span>
                                 </li>
                                 <li>
-                                    <Link href="/users">Users List</Link>
+                                    <a href="/api/tasks">Tasks API</a>
                                 </li>
                                 <li>
                                     <a href="/api/users">Users API</a>

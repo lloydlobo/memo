@@ -1,34 +1,44 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import Layout from "../../components/Layout";
-import List from "../../components/misc/List";
-import { User } from "../../interfaces";
-import { sampleUserData } from "../../lib/local/sample-data";
+import { TaskData } from "../../interfaces";
+import data from "../../lib/local/data";
 
 type Props = {
-    items: User[];
+    tasks: TaskData[];
 };
 
-const WithStaticProps = ({ items }: Props) => (
-    <Layout title="Users List | Next.js + TypeScript Example">
-        <h1>Users List</h1>
-        <p>
-            Example fetching data from inside <code>getStaticProps()</code>.
-        </p>
-        <p>You are currently on: /users</p>
-        <List items={items} />
-        <p>
-            <Link href="/">Go home</Link>
-        </p>
+const WithStaticProps = ({ tasks }: Props) => (
+    <Layout title="Tasks List">
+        <main>
+            <section>
+                <div className="container grid place-content-center gap-4 py-12">
+                    <h1 className="text-center">Tasks List</h1>
+                    <div className="card bg-base-300">
+                        <ul className="divide-y p-4">
+                            {tasks.map((task) => (
+                                <li className="card-body" key={task.id}>
+                                    <Link href={`/tasks/${task.uuid}`}>
+                                        <div className="card-title">
+                                            {task.name}
+                                        </div>
+                                        <p>{task.description}</p>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
     </Layout>
 );
 
+// Don't forget to include the respective types for any props passed into
+// the component.
 export const getStaticProps: GetStaticProps = async () => {
-    // Example for including static props in a Next.js function component page.
-    // Don't forget to include the respective types for any props passed into
-    // the component.
-    const items: User[] = sampleUserData;
-    return { props: { items } };
+    const tasks: TaskData[] = data.tasks;
+    return { props: { tasks } };
 };
 
 export default WithStaticProps;

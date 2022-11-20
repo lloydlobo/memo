@@ -17,19 +17,32 @@ function App({
     Component,
     pageProps: { session, ...pageProps },
 }: AppProps | any): JSX.Element {
+    const getLayout = Component.getLayout || ((page: JSX.Element) => page);
     return (
+        //  <SWRConfig
+        //     value={{
+        //         fetcher: fetcherFunc,
+        //         dedupingInterval: 1000,
+        //         onSuccess: onSuccessFunc,
+        //         refreshInterval: 1000,
+        //         revalidateOnFocus: false
+        // }}
+        //  >
         // Use session from loginform.tsx.
         <SessionProvider session={session}>
             <div className={`${inter.variable} font-sans`}>
-                {Component.auth ? (
-                    <Auth>
+                {getLayout(
+                    Component.auth ? (
+                        <Auth>
+                            <Component {...pageProps} />
+                        </Auth>
+                    ) : (
                         <Component {...pageProps} />
-                    </Auth>
-                ) : (
-                    <Component {...pageProps} />
+                    )
                 )}
             </div>
         </SessionProvider>
+        // </SWRConfig>
     );
 }
 

@@ -23,7 +23,7 @@ export default function CalendarTodayIcon({
             fill="none"
             shapeRendering="geometricPrecision"
         >
-            <g fill="currentColor" fill-rule="evenodd">
+            <g fill="currentColor" fillRule="evenodd">
                 <path
                     fillRule="nonzero"
                     d="M6 4.5h12A1.5 1.5 0 0 1 19.5 6v2.5h-15V6A1.5 1.5 0 0 1 6 4.5z"
