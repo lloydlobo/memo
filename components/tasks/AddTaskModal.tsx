@@ -65,7 +65,7 @@ export const AddTaskModal: React.FC<{}> = () => {
                                     <div title="due-date" className="dropdown">
                                         <label
                                             tabIndex={0}
-                                            className="btn-outline btn-sm btn m-1 gap-2 text-xs"
+                                            className="btn-outline btn btn-sm m-1 gap-2 text-xs"
                                         >
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@ export const AddTaskModal: React.FC<{}> = () => {
                                     <div title="projects" className="dropdown">
                                         <label
                                             tabIndex={0}
-                                            className="btn-outline btn-sm btn m-1 gap-2 text-xs"
+                                            className="btn-outline btn btn-sm m-1 gap-2 text-xs"
                                         >
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -191,7 +191,7 @@ export const AddTaskModal: React.FC<{}> = () => {
                                     Editor feedback
                                 </div>
 
-                                <div className="btn-group-horizontal flex space-x-2">
+                                <div className="btn-group-horizontal z-50 flex space-x-2">
                                     <button
                                         type="button"
                                         className=" btn-ghost btn bg-base-100 text-sm brightness-110"
@@ -207,7 +207,7 @@ export const AddTaskModal: React.FC<{}> = () => {
                                             className="absolute -inset-1  cursor-not-allowed"
                                         ></span>
                                         <input
-                                            className="btn-disabled btn-primary btn"
+                                            className="btn-primary btn-disabled btn"
                                             type="submit"
                                             value={"Add task"}
                                         />

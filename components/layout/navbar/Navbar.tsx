@@ -38,7 +38,7 @@ export default function Navbar({ status, session }: any): JSX.Element {
                 handlers={handleShortCuts}
             />
             <nav>
-                <div className="navbar bg-base-300/90 backdrop-blur-lg">
+                <div className="navbar z-40  bg-base-300/90">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <label
@@ -104,7 +104,7 @@ export default function Navbar({ status, session }: any): JSX.Element {
 
                     <div className="navbar-center w-max flex-1 bg-base-100"></div>
 
-                    <div className="navbar-end">
+                    <div className="navbar-end ">
                         {/* NOTE: Show btn if user is signed in. */}
                         {session?.user ? (
                             <>
