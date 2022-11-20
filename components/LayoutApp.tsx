@@ -11,15 +11,17 @@ export default function LayoutApp({
 
     return (
         <>
-            <div className={`grid grid-cols-5`}>
+            <div className={`flex sm:grid sm:grid-cols-7`}>
                 <AppSidebar
                     toggleDrawer={toggleDrawer}
                     setToggleDrawer={setToggleDrawer}
-                    className="col-span-1 col-end-2"
+                    className="absolute z-10 bg-base-200 drop-shadow-sm sm:col-span-1 sm:col-end-2 sm:shadow-none "
                 />
                 <div
-                    className={`${
-                        toggleDrawer ? "col-span-4 col-start-2" : "col-span-5"
+                    className={`-z-10 ${
+                        toggleDrawer
+                            ? "sm:col-span-full sm:col-start-2"
+                            : "sm:col-span-full"
                     }`}
                 >
                     {/*     <!-- Page content here --> */}
