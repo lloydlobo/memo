@@ -46,114 +46,122 @@ export default function AppSidebar({
             </div>
 
             {toggleDrawer ? (
-                <div className="absolute z-0 h-screen w-screen bg-base-300/50 backdrop-blur-[0.64px] sm:hidden"></div>
+                <div className="absolute h-screen w-screen bg-base-300/50 backdrop-blur-[0.64px] sm:hidden"></div>
             ) : null}
+
             <aside
-                className={`grid w-fit pt-5 ${className} ${
-                    toggleDrawer ? "h-full" : "absolute -left-48 "
+                className={`${className} ${
+                    toggleDrawer
+                        ? "fixed h-full pt-5"
+                        : "absolute -left-[9999px]"
                 }`}
             >
-                <ul className="menu menu-compact w-max pr-2">
-                    {/*       <!-- Sidebar content here --> */}
-                    <li>
-                        <Link href="/app">
-                            <InboxIcon className="h-5" />
-                            <span>Inbox</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/app">
-                            <CalendarTodayIcon date={today} className="h-6" />
-                            <span>Today</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/app">
-                            <CalendarDaysIcon className="h-5" />
-                            <span>Upcoming</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/app">
-                            <Squares2x2Icon className="h-5" />
-                            <span>Filters & Labels</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/app">
-                            <CheckCircleIcon className="h-5 w-8" />
-                            <span>Completed</span>
-                        </Link>
-                    </li>
-                    <Disclosure>
-                        {({ open }) => (
-                            <>
-                                <li className="mt-5">
-                                    <Disclosure.Button className="flex w-full py-2 font-semibold text-base-content/70">
-                                        <span className="mr-auto">
-                                            Favorites
-                                        </span>
-                                        <ChevronUpIcon
-                                            className={` ${
-                                                open
-                                                    ? "-rotate-180 transform"
-                                                    : "-rotate-90 transform"
-                                            } h-5 w-5`}
-                                        />
-                                    </Disclosure.Button>
-                                </li>
-                                <Disclosure.Panel className="">
-                                    <li>
-                                        <Link href="">
-                                            <FunnelIcon className="h-5" />
-                                            <span>This Week</span>
-                                        </Link>
+                <div className="absolute w-fit">
+                    <ul className="menu menu-compact w-max">
+                        {/*       <!-- Sidebar content here --> */}
+                        <li>
+                            <Link href="/app">
+                                <InboxIcon className="h-5" />
+                                <span>Inbox</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/app">
+                                <CalendarTodayIcon
+                                    date={today}
+                                    className="h-6"
+                                />
+                                <span>Today</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/app">
+                                <CalendarDaysIcon className="h-5" />
+                                <span>Upcoming</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/app">
+                                <Squares2x2Icon className="h-5" />
+                                <span>Filters & Labels</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/app">
+                                <CheckCircleIcon className="h-5 w-8" />
+                                <span>Completed</span>
+                            </Link>
+                        </li>
+                        <Disclosure>
+                            {({ open }) => (
+                                <>
+                                    <li className="mt-5">
+                                        <Disclosure.Button className="flex w-full py-2 font-semibold text-base-content/70">
+                                            <span className="mr-auto">
+                                                Favorites
+                                            </span>
+                                            <ChevronUpIcon
+                                                className={` ${
+                                                    open
+                                                        ? "-rotate-180 transform"
+                                                        : "-rotate-90 transform"
+                                                } h-5 w-5`}
+                                            />
+                                        </Disclosure.Button>
                                     </li>
-                                    <li>
-                                        <Link href="">
-                                            <FunnelIcon className="h-5" />
-                                            <span>View all</span>
-                                        </Link>
+                                    <Disclosure.Panel className="">
+                                        <li>
+                                            <Link href="">
+                                                <FunnelIcon className="h-5" />
+                                                <span>This Week</span>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="">
+                                                <FunnelIcon className="h-5" />
+                                                <span>View all</span>
+                                            </Link>
+                                        </li>
+                                    </Disclosure.Panel>
+                                </>
+                            )}
+                        </Disclosure>
+                        <Disclosure>
+                            {({ open }) => (
+                                <>
+                                    <li className="mt-5">
+                                        <Disclosure.Button className="flex w-full py-2 font-semibold text-base-content/70">
+                                            <span className="mr-auto">
+                                                Projects
+                                            </span>
+                                            <ChevronUpIcon
+                                                className={` ${
+                                                    open
+                                                        ? "-rotate-180 transform"
+                                                        : "-rotate-90 transform"
+                                                } h-5 w-5`}
+                                            />
+                                        </Disclosure.Button>
                                     </li>
-                                </Disclosure.Panel>
-                            </>
-                        )}
-                    </Disclosure>
-                    <Disclosure>
-                        {({ open }) => (
-                            <>
-                                <li className="mt-5">
-                                    <Disclosure.Button className="flex w-full py-2 font-semibold text-base-content/70">
-                                        <span className="mr-auto">
-                                            Projects
-                                        </span>
-                                        <ChevronUpIcon
-                                            className={` ${
-                                                open
-                                                    ? "-rotate-180 transform"
-                                                    : "-rotate-90 transform"
-                                            } h-5 w-5`}
-                                        />
-                                    </Disclosure.Button>
-                                </li>
-                                <Disclosure.Panel className="">
-                                    <li>
-                                        <Link href="">
-                                            <CircleIcon className="project_icon h-5" />
-                                            <span>Project 1</span>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="">
-                                            <CircleIcon className="project_icon h-5" />
-                                            <span>Project 2</span>
-                                        </Link>
-                                    </li>
-                                </Disclosure.Panel>
-                            </>
-                        )}
-                    </Disclosure>
-                </ul>
+                                    <Disclosure.Panel className="">
+                                        <li>
+                                            <Link href="">
+                                                <CircleIcon className="project_icon h-5" />
+                                                <span>Project 1</span>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="">
+                                                <CircleIcon className="project_icon h-5" />
+                                                <span>Project 2</span>
+                                            </Link>
+                                        </li>
+                                    </Disclosure.Panel>
+                                </>
+                            )}
+                        </Disclosure>
+                    </ul>
+                </div>
             </aside>
         </>
     );

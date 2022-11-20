@@ -12,20 +12,25 @@ export default function LayoutApp({
     return (
         <>
             <div className={`flex sm:grid sm:grid-cols-7`}>
-                <AppSidebar
-                    toggleDrawer={toggleDrawer}
-                    setToggleDrawer={setToggleDrawer}
-                    className="absolute z-10 bg-base-200 drop-shadow-sm sm:col-span-1 sm:col-end-2 sm:shadow-none "
-                />
+                <div
+                    className={`${
+                        toggleDrawer ? "col-span-2" : "absolute"
+                    } bg-base-300`}
+                >
+                    <AppSidebar
+                        toggleDrawer={toggleDrawer}
+                        setToggleDrawer={setToggleDrawer}
+                        className="fixed z-10 w-[50vw] bg-base-300 drop-shadow-sm sm:w-fit"
+                    />
+                </div>
                 <div
                     className={`-z-10 ${
                         toggleDrawer
-                            ? "sm:col-span-full sm:col-start-2"
+                            ? "col-start-1 sm:col-span-full sm:col-start-3"
                             : "sm:col-span-full"
                     }`}
                 >
-                    {/*     <!-- Page content here --> */}
-                    {children}
+                    {children} {/*     <!-- Page content here --> */}
                 </div>
             </div>
         </>
