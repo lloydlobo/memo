@@ -12,7 +12,7 @@ export function HeaderInbox({ projectName = "Inbox" }) {
         <header
             aria-label="Project Header: includes Project Notes button, Sort Options button, and More Project Actions button"
             data-testid="view_header"
-            className="navbar sticky top-[3.7rem] z-10 w-full bg-base-100 bg-opacity-90 pt-5 pl-4 pb-3 pr-0 backdrop-blur-md "
+            className="navbar sticky top-[3.7rem] z-10 w-full bg-base-100 bg-opacity-95 pt-5 pl-4 pb-3 pr-0 backdrop-blur-sm "
         >
             <div className="flex w-full pb-2">
                 <div className="flex flex-1 items-center space-x-1">

@@ -11,7 +11,7 @@ export default function LayoutApp({
 
     return (
         <>
-            <div className={`flex sm:grid sm:grid-cols-7`}>
+            <div className={`sm:grid sm:grid-cols-7`}>
                 <div
                     className={`${
                         toggleDrawer ? "col-span-2" : "absolute"
@@ -27,7 +27,7 @@ export default function LayoutApp({
                     className={`-z-10 ${
                         toggleDrawer
                             ? "col-start-1 sm:col-span-full sm:col-start-3"
-                            : "sm:col-span-full"
+                            : "sm:col-span-full sm:px-32"
                     }`}
                 >
                     {children} {/*     <!-- Page content here --> */}

@@ -36,7 +36,7 @@ export default function AppSidebar({
 
     return (
         <>
-            <div className="fixed top-2 left-1 z-50">
+            <div className="fixed top-2 left-1 z-50 w-fit">
                 <button
                     onClick={() => setToggleDrawer(!toggleDrawer)}
                     className="btn-ghost btn backdrop-blur-sm "
@@ -45,14 +45,10 @@ export default function AppSidebar({
                 </button>
             </div>
 
-            {toggleDrawer ? (
-                <div className="absolute h-screen w-screen bg-base-300/50 backdrop-blur-[0.64px] sm:hidden"></div>
-            ) : null}
-
             <aside
-                className={`${className} ${
+                className={`z-50 ${className} ${
                     toggleDrawer
-                        ? "fixed h-full pt-5"
+                        ? "fixed h-screen pt-5"
                         : "absolute -left-[9999px]"
                 }`}
             >

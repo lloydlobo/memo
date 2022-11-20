@@ -3,7 +3,7 @@ import React from "react";
 export default function ListView() {
     return (
         <div
-            className="listbox bg-opacity-90 pt-5 pl-4 pb-3 pr-0 backdrop-blur-md"
+            className="listbox pt-5 pl-4 pb-3 pr-0"
             aria-aria-multiselectable="true"
             data-selection-empty
             tabIndex={-1}
@@ -17,7 +17,7 @@ export default function ListView() {
                                     data-selection-id={"9876543210/1029384756"}
                                     aria-selected="false"
                                     id={"task-9876543210"}
-                                    className="task_list_item task_list_item--with_subtasks task_list_item--project_hidden flex w-full "
+                                    className="task_list_item task_list_item--with_subtasks task_list_item--project_hidden flex  "
                                     data-item-id={"9876543210"}
                                     data-item-indent={1}
                                     data-task-navigation-element={9876543210}
@@ -29,7 +29,7 @@ export default function ListView() {
                                         aria-labelledby={
                                             "task-1234567890-content"
                                         }
-                                        className="flex w-full"
+                                        className="flex "
                                     >
                                         <div className="task_list_item_overflow_actions btn-group-horizontal btn-group">
                                             <div className="drag-container"></div>
@@ -86,8 +86,9 @@ export default function ListView() {
                                                 </svg>
                                             </div>
                                         </button>
+
                                         {/* task_list_item_content */}
-                                        <div className="flex w-full ">
+                                        <div className="hidden ">
                                             {/* task_list_item_content_wrapper */}
                                             <div className="flex flex-1">
                                                 <div className="stat-title">
@@ -196,10 +197,10 @@ export default function ListView() {
                                     <input
                                         type="text"
                                         defaultValue={"c"}
-                                        className="input-ghost w-full border-none bg-transparent"
+                                        className="input-ghost  border-none bg-transparent"
                                     />
                                 </li>
-                                <li className="controller actions card-actions w-full">
+                                <li className="controller actions card-actions ">
                                     <button
                                         type="button"
                                         data-add-task-navigation-element="true"
