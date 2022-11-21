@@ -2,8 +2,8 @@ import React from "react";
 
 export default function TaskListOverflowActions() {
     return (
-        <div className="task_list_item_overflow_actions grid grid-cols-2 ">
-            <div className="drag-container btn-ghost btn  btn-sm btn-square opacity-10 hover:opacity-100 ">
+        <div className="task_list_item_overflow_actions flex">
+            <div className="drag-container btn-ghost btn btn-sm btn-square opacity-10 hover:opacity-100 ">
                 <span
                     className="task_list_item__drag_handle item_dnd_handle "
                     data-testid="task_list_item__drag_handle"

@@ -15,7 +15,7 @@ export default function TaskContent({
                 tabIndex={0}
                 data-action-hint="task-root"
                 aria-labelledby={"task-1234567890-content"}
-                className="grid grid-flow-col gap-2"
+                className="flex gap-2"
             >
                 <TaskListOverflowActions />
 
@@ -33,14 +33,19 @@ export default function TaskContent({
                 </button>
 
                 {/* task_list_item_content */}
-                <div className="flex gap-4">
+                <div
+                    className="grid w-full content-between gap-4"
+                    style={{ gridTemplateColumns: "1fr auto" }}
+                >
                     {/* task_list_item_content_wrapper */}
                     <div className="mr-auto flex w-full flex-1">
                         <div className="flex items-center text-sm">
                             Lorem, ipsum dolor
                         </div>
                     </div>
-                    <TaskContentActions onEdit={onEdit} />
+                    <div className="place-self-end">
+                        <TaskContentActions onEdit={onEdit} />
+                    </div>
                 </div>
             </div>
         </>
