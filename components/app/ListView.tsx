@@ -13,17 +13,17 @@ export default function ListView() {
         >
             <div className="listview" data-testid="project-list-view">
                 <ul className="section_list px-12">
-                    <li>
+                    <li className="rounded-md bg-black/30 p-2 shadow-sm">
                         <section className="section">
                             <ul className="items space-y-1 divide-y divide-base-content/10">
                                 <li
                                     data-selection-id={"9876543210/1029384756"}
                                     aria-selected="false"
                                     id={"task-9876543210"}
-                                    className="task_list_item task_list_item--with_subtasks task_list_item--project_hidden flex w-full"
                                     data-item-id={"9876543210"}
                                     data-item-indent={1}
                                     data-task-navigation-element={9876543210}
+                                    className="task_list_item task_list_item--with_subtasks task_list_item--project_hiddenw-full"
                                 >
                                     {editTask ? (
                                         <TaskContent
