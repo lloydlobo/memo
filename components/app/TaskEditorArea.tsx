@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useRef } from "react";
 import { TaskData } from "../../interfaces";
 
-export default function TaskEditorArea({ task }: { task: TaskData }) {
+// Warning: A component is `contentEditable` and contains `children` managed by React. It is now your responsibility to guarantee that none of those nodes are unexpectedly modified or duplicated. This is probably not intentional.
+export default function TaskEditorArea({
+    task,
+    editIndex,
+    index,
+}: {
+    task: TaskData;
+    editIndex: number | null;
+    index: number;
+}) {
+    const refDescription = useRef(null);
+
+    // https://stackoverflow.com/questions/65111813/form-input-size
+    function updateHeight() {
+        const textArea = refDescription.current as HTMLDivElement | null;
+        if (typeof textArea === null || !textArea) {
+            return; // <></> console.log(element);
+        } else {
+            textArea.style.height = "1px";
+            textArea.style.height = textArea.scrollHeight + "px";
+        }
+    }
+
     return (
         <div>
             <div className="editing-area rounded-lg border border-base-content border-opacity-20 px-4 py-4">
@@ -10,7 +32,7 @@ export default function TaskEditorArea({ task }: { task: TaskData }) {
                         <div className="">
                             <div className="markdown-content no-focus-marker">
                                 <div
-                                    contentEditable="true"
+                                    // contentEditable={`${editIndex === index}`}
                                     translate="no"
                                     data-typist-editor="true"
                                     data-rich-text="true"
@@ -46,7 +68,7 @@ export default function TaskEditorArea({ task }: { task: TaskData }) {
                         <div className="">
                             <div className="markdown-content description-field no-focus-marker m-0 p-0">
                                 <div
-                                    contentEditable="true"
+                                    // contentEditable={`${editIndex === index}`}
                                     translate="no"
                                     data-typist-editor="true"
                                     data-rich-text="true"
@@ -63,7 +85,19 @@ export default function TaskEditorArea({ task }: { task: TaskData }) {
                                     >
                                         {/* ::before */}
                                         <br className="ProseMirror-trailingBreak hidden break-inside-auto text-xs " />
-                                        {task.description}
+                                        <textarea
+                                            // type="textbox"
+                                            ref={refDescription}
+                                            className="input-ghost input m-auto w-full max-w-full rounded-none border-none sm:w-[90%]"
+                                            // value={task.description}
+                                            defaultValue={task.description}
+                                            onInput={() => updateHeight()}
+                                            onChange={(e) => {
+                                                // TODO: Add setDescription
+                                                // useState or useContext from Store.
+                                                console.log(e.target.value);
+                                            }}
+                                        ></textarea>
                                     </p>
                                 </div>
                             </div>
@@ -135,6 +169,7 @@ export default function TaskEditorArea({ task }: { task: TaskData }) {
                                     ></circle>
                                 </svg>
                                 <div className="text flex items-center text-[8px]">
+                                    <div className="project-name">P-98</div>
                                     <span className="sectionSeperator">/</span>
                                     <div className="text">
                                         <div className="simple-content ">

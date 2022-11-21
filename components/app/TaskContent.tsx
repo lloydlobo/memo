@@ -8,10 +8,16 @@ export default function TaskContent({
     task,
     onEditClick,
     onTaskHover,
+    className,
+    index,
+    editIndex,
 }: {
     task: TaskData;
     onEditClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
     onTaskHover: any;
+    className: string;
+    index: number;
+    editIndex: number | null;
 }) {
     return (
         <>
@@ -20,7 +26,7 @@ export default function TaskContent({
                 tabIndex={0}
                 data-action-hint="task-root"
                 aria-labelledby={"task-1234567890-content"}
-                className="flex gap-2"
+                className={`flex gap-2 ${className}`}
             >
                 <TaskListOverflowActions onTaskHover={onTaskHover} />
 

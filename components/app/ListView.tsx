@@ -3,20 +3,18 @@ import { toast } from "react-toastify";
 import { TaskData } from "../../interfaces";
 import ListTaskItem from "./ListTaskItem";
 
+/**
+ * How to toggle in a map function in React?
+ * https://stackoverflow.com/a/71926750
+ */
 export default function ListView({ tasks }: { tasks: TaskData[] }) {
     const taskRef = useRef(null);
-    const [hoverTask, setHoverTask] = useState(true);
 
+    const [hoverTask, setHoverTask] = useState(true);
     useEffect(() => {
         const taskDiv = taskRef.current as unknown as HTMLDivElement;
-
         if (taskDiv && typeof taskDiv != null) {
-            /* taskDiv.addEventListener("mouseenter", () => { */
-            /*     setHoverTask(!hoverTask); */
-            /* }); */
-            /* taskDiv.addEventListener("mouseout", () => { */
-            /*     setHoverTask(hoverTask ? !hoverTask : hoverTask); */
-            /* }); */
+            console.log(taskDiv);
         } else {
             toast.error("RefErr: Could not find task");
         }
@@ -40,6 +38,7 @@ export default function ListView({ tasks }: { tasks: TaskData[] }) {
                                             <div className=" " ref={taskRef}>
                                                 <ListTaskItem
                                                     task={task}
+                                                    index={index}
                                                     onTaskHover={hoverTask}
                                                 />
                                             </div>
