@@ -17,6 +17,7 @@ export { default as FunnelIcon } from "./funnel";
 export { default as GitHubIcon } from "./github";
 export { default as HamburgerIcon } from "./hamburger";
 export { default as InboxIcon } from "./inbox";
+export { default as ListBulletIcon } from "./list-bullet";
 export { default as LoadingDots } from "./loading-dots";
 export { default as SearchIcon } from "./search";
 export { default as Squares2x2Icon } from "./squares-2x2";
