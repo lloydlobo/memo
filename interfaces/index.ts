@@ -30,3 +30,9 @@ export type DataType = {
     users: UserData[];
     tasks: TaskData[];
 };
+
+export type ServerTasks = {
+    tasks: TaskData[];
+    isLoading: boolean;
+    isError: any;
+};

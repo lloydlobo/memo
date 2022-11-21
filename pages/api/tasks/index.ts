@@ -10,7 +10,7 @@ const handler = (_req: NextApiRequest, res: NextApiResponse) => {
             throw new Error("Cannot find tasks data");
         }
 
-        res.status(200).json({ statusCode: 200, data: tasks });
+        res.status(200).json(tasks);
     } catch (e: any) {
         return res.status(500).json({ statusCode: 500, message: e.message });
     }

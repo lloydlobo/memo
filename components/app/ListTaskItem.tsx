@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import TaskContent from "./TaskContent";
 import { TaskEditor } from "./TaskEditor";
+import { TaskData } from "../../interfaces";
 
 export default function ListTaskItem({
+    task,
     onTaskHover,
 }: {
+    task: TaskData;
     onTaskHover: boolean;
 }) {
     const [editTask, setEditTask] = useState(true);
@@ -22,6 +25,7 @@ export default function ListTaskItem({
             >
                 {editTask ? (
                     <TaskContent
+                        task={task}
                         onEditClick={() => setEditTask(!editTask)}
                         onTaskHover={onTaskHover}
                     />

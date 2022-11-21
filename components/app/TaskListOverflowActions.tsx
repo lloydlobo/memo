@@ -7,11 +7,11 @@ export default function TaskListOverflowActions({
 }) {
     return (
         <div
-            className={`task_list_item_overflow_actions flex ${
+            className={`hover-actions task_list_item_overflow_actions flex ${
                 onTaskHover ? "opacity-100" : "opacity-5"
             }`}
         >
-            <div className="drag-container btn-ghost btn btn-xs btn-square hover:btn-outline">
+            <div className="drag-container btn-ghost btn btn-xs hover:btn-outline">
                 <span
                     className="task_list_item__drag_handle item_dnd_handle h-5 w-5 "
                     data-testid="task_list_item__drag_handle"

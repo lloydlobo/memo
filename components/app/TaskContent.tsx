@@ -1,12 +1,15 @@
 import React from "react";
+import { TaskData } from "../../interfaces";
 import { CheckCircleIcon } from "../icons";
 import TaskContentActions from "./TaskContentActions";
 import TaskListOverflowActions from "./TaskListOverflowActions";
 
 export default function TaskContent({
+    task,
     onEditClick,
     onTaskHover,
 }: {
+    task: TaskData;
     onEditClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
     onTaskHover: any;
 }) {
@@ -42,7 +45,7 @@ export default function TaskContent({
                     {/* task_list_item_content_wrapper */}
                     <div className="mr-auto flex w-full flex-1">
                         <div className="flex items-center text-sm">
-                            Lorem, ipsum dolor
+                            {task.name}
                         </div>
                     </div>
 
