@@ -24,7 +24,7 @@ export default function LayoutApp({
                     />
                 </div>
                 <div
-                    className={`-z-10 ${
+                    className={` ${
                         toggleDrawer
                             ? "col-start-1 sm:col-span-full sm:col-start-3"
                             : "sm:col-span-full sm:px-32"
