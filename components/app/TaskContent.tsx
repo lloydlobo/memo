@@ -4,9 +4,11 @@ import TaskContentActions from "./TaskContentActions";
 import TaskListOverflowActions from "./TaskListOverflowActions";
 
 export default function TaskContent({
-    onEdit,
+    onEditClick,
+    onTaskHover,
 }: {
-    onEdit: React.MouseEventHandler<HTMLButtonElement> | undefined;
+    onEditClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+    onTaskHover: any;
 }) {
     return (
         <>
@@ -17,7 +19,7 @@ export default function TaskContent({
                 aria-labelledby={"task-1234567890-content"}
                 className="flex gap-2"
             >
-                <TaskListOverflowActions />
+                <TaskListOverflowActions onTaskHover={onTaskHover} />
 
                 <button
                     type="button"
@@ -43,9 +45,11 @@ export default function TaskContent({
                             Lorem, ipsum dolor
                         </div>
                     </div>
-                    <div className="place-self-end">
-                        <TaskContentActions onEdit={onEdit} />
-                    </div>
+
+                    <TaskContentActions
+                        onEditClick={onEditClick}
+                        onTaskHover={onTaskHover}
+                    />
                 </div>
             </div>
         </>

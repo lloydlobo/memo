@@ -1,9 +1,26 @@
-import React, { useState } from "react";
-import TaskContent from "./TaskContent";
-import { TaskEditor } from "./TaskEditor";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
+import ListTaskItem from "./ListTaskItem";
 
 export default function ListView() {
-    const [editTask, setEditTask] = useState(true);
+    const taskRef = useRef(null);
+    const [hoverTask, setHoverTask] = useState(true);
+
+    useEffect(() => {
+        const task = taskRef.current as unknown as HTMLDivElement;
+
+        if (task && typeof task != null) {
+            task.addEventListener("mouseenter", () => {
+                setHoverTask(!hoverTask);
+            });
+            task.addEventListener("mouseout", () => {
+                setHoverTask(hoverTask ? !hoverTask : hoverTask);
+            });
+        } else {
+            toast.error("RefErr: Could not find task");
+        }
+    }, [taskRef]);
+
     return (
         <div
             className="listbox pt-5 pl-4 pb-3 pr-0"
@@ -16,28 +33,8 @@ export default function ListView() {
                     <li className="rounded-md bg-black/30 p-2 shadow-sm">
                         <section className="section">
                             <ul className="items space-y-1 divide-y divide-base-content/10">
-                                <li
-                                    data-selection-id={"9876543210/1029384756"}
-                                    aria-selected="false"
-                                    id={"task-9876543210"}
-                                    data-item-id={"9876543210"}
-                                    data-item-indent={1}
-                                    data-task-navigation-element={9876543210}
-                                    className="task_list_item task_list_item--with_subtasks task_list_item--project_hiddenw-full"
-                                >
-                                    {editTask ? (
-                                        <TaskContent
-                                            onEdit={() =>
-                                                setEditTask(!editTask)
-                                            }
-                                        />
-                                    ) : (
-                                        <TaskEditor
-                                            onCancel={() =>
-                                                setEditTask(!editTask)
-                                            }
-                                        />
-                                    )}
+                                <li className="" ref={taskRef}>
+                                    <ListTaskItem onTaskHover={hoverTask} />
                                 </li>
                             </ul>
                         </section>
@@ -46,7 +43,9 @@ export default function ListView() {
                             className="btn-ghost btn opacity-5"
                             type="button"
                         >
-                            ::before Add task ::after
+                            {/* ::before */}
+                            Add task
+                            {/* ::after */}
                         </button>
                     </li>
                 </ul>

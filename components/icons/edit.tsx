@@ -1,10 +1,10 @@
 /**
  * EditIcon.
  *
- * Source: https://github.com/vercel/mongodb-starter/blob/main/components/icons/edit.tsx
  *
  * @param className
  * @returns {JSX.Element}
+ * @source https://github.com/vercel/mongodb-starter/blob/main/components/icons/edit.tsx
  */
 export default function EditIcon({
     className,
