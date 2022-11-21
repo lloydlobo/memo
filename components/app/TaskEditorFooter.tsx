@@ -6,16 +6,16 @@ export default function TaskEditorFooter({
     onCancel: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }) {
     return (
-        <div className="task_editor__footer c6a2474f _04f32a92 d3449da6 cc313af7 b7b3664a f64f71c8 _8c75067a">
-            <div className="_91e05f0f b18d0b47 c6a2474f _68ab48ca _8c75067a e7a8b591">
+        <div className="task_editor__footer flex items-center">
+            <div className="flex flex-1 items-center py-2">
                 <a
                     rel="noopener noreferrer"
                     target="_blank"
                     href="https://doist.typeform.com/to/DdLvQgDl"
                     title="Editor feedback"
-                    className="task_editor__feedback_link _6f59c771 c6a2474f _04f32a92 cc313af7 b7b3664a f64f71c8"
+                    className="task_editor__feedback_link _6f59c771 c6a2474f _04f32a92 cc313af7 b7b3664a f64f71c8 flex gap-4"
                 >
-                    <div className="_91e05f0f c6a2474f _68ab48ca _88012354 e7a8b591">
+                    <div className="">
                         <svg width="24" height="24" aria-hidden="true">
                             <g fill="none" fillRule="evenodd">
                                 <path
@@ -31,37 +31,33 @@ export default function TaskEditorFooter({
                             </g>
                         </svg>
                     </div>
-                    <div className="_91e05f0f b18d0b47 c6a2474f _68ab48ca _8c75067a e7a8b591">
-                        <div className="task_editor__feedback_link__label a83bd4e0 a8d37c6e _7be5c531 _2f303ac3 c6a2474f _211eebc7">
+                    <div className="self-center">
+                        <div className="task_editor__feedback_link__label ">
                             Editor feedback
                         </div>
                     </div>
                 </a>
             </div>
-            <div className="_91e05f0f c6a2474f _68ab48ca _88012354 e7a8b591">
+            <div className="">
                 <div
                     data-testid="task-editor-action-buttons"
-                    className="_556714e1 c6a2474f _04f32a92 cc313af7 a6716a2d b7b3664a cf4ec4c9"
+                    className="grid grid-cols-2 items-center"
                 >
                     <button
                         type="button"
                         aria-disabled="false"
-                        className="a8af2163 _16b6b062 _352995bd c6a2474f _56a651f6"
+                        className="btn btn-sm"
                         onClick={onCancel}
                     >
-                        <span className="bbdb467b c6a2474f _48affbca _57850d52">
-                            Cancel
-                        </span>
+                        <span className="">Cancel</span>
                     </button>
                     <button
                         data-testid="task-editor-submit-button"
                         type="submit"
                         aria-disabled="false"
-                        className="a8af2163 _3d1243b2 _352995bd c6a2474f _56a651f6"
+                        className="btn-primary btn btn-sm"
                     >
-                        <span className="bbdb467b c6a2474f _48affbca _57850d52">
-                            Save
-                        </span>
+                        <span className="">Save</span>
                     </button>
                 </div>
             </div>
