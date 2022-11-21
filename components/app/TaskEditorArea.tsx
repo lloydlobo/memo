@@ -1,12 +1,13 @@
 import React from "react";
+import { TaskData } from "../../interfaces";
 
-export default function TaskEditorArea() {
+export default function TaskEditorArea({ task }: { task: TaskData }) {
     return (
         <div>
-            <div className="editing-area">
+            <div className="editing-area rounded-lg border border-base-content border-opacity-20 px-4 py-4">
                 <div className="input-fields">
-                    <div className="content-fields no-focus-marker flex">
-                        <div className="flex">
+                    <div className="content-fields no-focus-marker">
+                        <div className="">
                             <div className="markdown-content no-focus-marker">
                                 <div
                                     contentEditable="true"
@@ -17,33 +18,33 @@ export default function TaskEditorArea() {
                                     aria-readonly="false"
                                     aria-multiline="true"
                                     aria-label="Task name"
-                                    className="ProseMirror"
+                                    className="ProseMirror "
                                     tabIndex={0}
                                 >
-                                    <p>
+                                    <p className="flex flex-wrap items-center gap-1">
                                         <span
                                             data-math-id=""
-                                            className=""
+                                            className="badge"
                                             data-testid="natural-language-match"
                                         >
                                             @Evening
                                         </span>
                                         <span
                                             data-math-id=""
-                                            className=""
+                                            className="badge"
                                             data-testid="natural-language-match"
                                         >
                                             @Important
                                         </span>
-                                        45 minutes sprint of project A
+                                        {task.name}
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="flex">
-                        <div className="flex">
-                            <div className="markdown-content description-field no-focus-marker">
+                    <div className="">
+                        <div className="">
+                            <div className="markdown-content description-field no-focus-marker m-0 p-0">
                                 <div
                                     contentEditable="true"
                                     translate="no"
@@ -58,30 +59,32 @@ export default function TaskEditorArea() {
                                 >
                                     <p
                                         data-placeholder="Description"
-                                        className="is-empty is-editor-empty"
+                                        className="is-empty is-editor-empty px-0.5 py-2 text-sm opacity-60"
                                     >
                                         {/* ::before */}
-                                        <br className="ProseMirror-trailingBreak" />
+                                        <br className="ProseMirror-trailingBreak hidden break-inside-auto text-xs " />
+                                        {task.description}
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="task-editor extra-fields flex">
-                    <div className="pills flex">
+                <div className="task-editor extra-fields flex w-full items-center">
+                    <div className="pills flex flex-1 items-center gap-2">
                         <button
-                            className="item-due-selector icon-pill btn-outline btn flex"
+                            className="item-due-selector icon-pill btn-outline btn btn-xs flex items-center  gap-1"
                             type="button"
                             aria-expanded="false"
                         >
-                            <div className="calendar-icon date-overdue flex">
+                            <div className="calendar-icon date-overdue flex items-center gap-1">
                                 <svg
                                     data-svgs-path="sm1/calendar_small.svg"
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
                                     height="16"
                                     viewBox="0 0 16 16"
+                                    className="flex gap-1"
                                 >
                                     <path
                                         fill="currentColor"
@@ -90,7 +93,7 @@ export default function TaskEditorArea() {
                                     ></path>
                                 </svg>
                             </div>
-                            <span className="date date-overdue">
+                            <span className="date date-overdue flex items-center">
                                 8 Feb
                                 <svg
                                     width="12"
@@ -113,15 +116,15 @@ export default function TaskEditorArea() {
                             aria-controls="dropdown-select-105-pop"
                             aria-expanded="false"
                             aria-haspopup="listbox"
-                            className="icon-pill project projectSectionPill--container btn-outline  btn flex"
+                            className="icon-pill project projectSectionPill--container btn-outline btn btn-xs flex"
                             tabIndex={0}
                         >
-                            <div className="projectSectionPill flex">
+                            <div className="projectSectionPill flex items-center">
                                 <svg
                                     width="16"
                                     height="16"
                                     viewBox="0 0 16 16"
-                                    className="project_icon projectSectionPill--icon"
+                                    className="project_icon projectSectionPill--icon flex items-center"
                                     style={{ color: "rgb(184, 37, 111)" }}
                                 >
                                     <circle
@@ -131,10 +134,10 @@ export default function TaskEditorArea() {
                                         fill="currentColor"
                                     ></circle>
                                 </svg>
-                                <div className="text">
+                                <div className="text flex items-center text-[8px]">
                                     <span className="sectionSeperator">/</span>
                                     <div className="text">
-                                        <div className="simple-content">
+                                        <div className="simple-content ">
                                             COURSES
                                         </div>
                                     </div>
@@ -144,7 +147,7 @@ export default function TaskEditorArea() {
                     </div>
 
                     <div
-                        className="item-actions flex bg-info"
+                        className="item-actions flex "
                         data-item-actions-root
                         data-item-content="45 minutes sprint of project A"
                         data-item-project-id="983423423423"

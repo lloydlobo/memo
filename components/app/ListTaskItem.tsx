@@ -31,6 +31,7 @@ export default function ListTaskItem({
                     />
                 ) : (
                     <TaskEditor
+                        task={task}
                         onTaskHover={onTaskHover}
                         onCancel={() => setEditTask(!editTask)}
                     />

@@ -41,7 +41,7 @@ export default function TaskEditorFooter({
             <div className="">
                 <div
                     data-testid="task-editor-action-buttons"
-                    className="grid grid-cols-2 items-center"
+                    className="grid grid-cols-2 items-center gap-2"
                 >
                     <button
                         type="button"
