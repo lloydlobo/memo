@@ -88,7 +88,7 @@ export default function TaskEditorArea({
                                         <textarea
                                             // type="textbox"
                                             ref={refDescription}
-                                            className="input-ghost input m-auto w-full max-w-full rounded-none border-none sm:w-[90%]"
+                                            className="input-ghost input m-auto min-h-[2.5rem] w-full max-w-full rounded-none border-none"
                                             // value={task.description}
                                             defaultValue={task.description}
                                             onInput={() => updateHeight()}
