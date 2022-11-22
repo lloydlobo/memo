@@ -40,4 +40,4 @@ export default function AppIndex() {
     );
 }
 
-AppIndex.auth = true;
+AppIndex.auth = false;

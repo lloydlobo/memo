@@ -13,8 +13,8 @@ const Home = () => (
                 >
                     <div className="hero-content text-center">
                         <div className="grid max-w-2xl place-items-center gap-4 2xl:max-w-md">
-                            <h1 className="max-w-[13ch] place-self-center text-5xl font-bold leading-snug">
-                                Simple tasker to organize things, finally.
+                            <h1 className="max-0w-[13ch] place-self-center text-5xl font-bold leading-snug">
+                                Simple task manager to organize things, finally.
                             </h1>
                             <p className="max-w-[36ch] pb-6 text-lg">
                                 Provident cupiditate voluptatem et in. Quaerat

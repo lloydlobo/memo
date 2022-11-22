@@ -41,7 +41,7 @@ export default function Navbar({ status, session }: any): JSX.Element {
                         <div className="dropdown">
                             <label
                                 tabIndex={0}
-                                className="btn-ghost btn btn-circle"
+                                className="btn-ghost btn-circle btn"
                             >
                                 <HamburgerIcon className="h-auto w-5" />
                             </label>
@@ -80,6 +80,9 @@ export default function Navbar({ status, session }: any): JSX.Element {
                                 </li>
                                 <li>
                                     <Link href="/tasks">Tasks List</Link>
+                                </li>
+                                <li>
+                                    <Link href="/tasks/tasks">All tasks</Link>
                                 </li>
                                 <li>
                                     <Link href="/tasks/server">
@@ -125,7 +128,7 @@ export default function Navbar({ status, session }: any): JSX.Element {
                                 <button
                                     data-tip=""
                                     className={
-                                        "btn-ghost btn tooltip tooltip-bottom btn-circle hidden items-center normal-case before:inline-flex before:py-2 before:pr-[3.9ch] before:pl-[1ch] before:text-xs before:leading-none before:content-['Open_Productivity'] after:ml-[6ch] after:mt-[1.1ch] after:flex after:kbd after:text-xs after:leading-none after:content-['O'] after:kbd-sm xl:grid"
+                                        "btn-ghost tooltip tooltip-bottom btn-circle btn hidden items-center normal-case before:inline-flex before:py-2 before:pr-[3.9ch] before:pl-[1ch] before:text-xs before:leading-none before:content-['Open_Productivity'] after:ml-[6ch] after:mt-[1.1ch] after:flex after:kbd after:text-xs after:leading-none after:content-['O'] after:kbd-sm xl:grid"
                                     }
                                 >
                                     <svg
@@ -148,19 +151,19 @@ export default function Navbar({ status, session }: any): JSX.Element {
                             <></>
                         )}
                         <button
-                            className="btn-ghost btn tooltip tooltip-bottom btn-circle grid normal-case"
+                            className="btn-ghost tooltip tooltip-bottom btn-circle btn grid normal-case"
                             data-tip="Search"
                         >
                             <SearchInactiveIcon className="h-5 w-5" />
                         </button>
 
                         <button
-                            className="btn-ghost btn tooltip tooltip-bottom btn-circle grid normal-case"
+                            className="btn-ghost tooltip tooltip-bottom btn-circle btn grid normal-case"
                             data-tip="Notifications"
                         >
                             <div className="indicator">
                                 <BellActiveIcon className="h-5 w-5" />
-                                <span className="badge badge-primary badge-xs indicator-item"></span>
+                                <span className="badge-primary badge badge-xs indicator-item"></span>
                             </div>
                         </button>
 
@@ -205,7 +208,7 @@ export default function Navbar({ status, session }: any): JSX.Element {
                                     </MenuDropdown>
                                 ) : (
                                     <Link href={"/login"}>
-                                        <button className="btn-outline btn btn-sm grid w-max  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary">
+                                        <button className="btn-outline btn-sm btn grid w-max  grid-flow-col items-center gap-2 rounded-full border-base-content border-opacity-30 normal-case text-primary hover:btn-primary">
                                             <FaRegUserCircle className="text-lg" />
                                             <span>Sign In</span>
                                         </button>
