@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import Layout from "../../components/Layout";
-import usersObj from "../../lib/local/getFakeUsers";
+import { UserData } from "../../interfaces";
+import { getFakeUsers } from "../../lib/local/getFakeUsers";
 
-export default function AllTasks() {
-    const [users, setUsers] = useState(usersObj);
-    const handleChange = ({
-        e,
-    }: {
-        e: React.ChangeEvent<HTMLInputElement>;
-    }): void => {
+export default function AllTasks({
+    users,
+}: {
+    users: UserData[];
+}): JSX.Element {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         toast.info("You have successfully changed your name");
     };
 
@@ -32,7 +32,7 @@ export default function AllTasks() {
                                                     placeholder="done"
                                                     className="checkbox-accent checkbox"
                                                     onChange={(e) =>
-                                                        handleChange({ e })
+                                                        handleChange(e)
                                                     }
                                                 />
                                             </div>
@@ -56,4 +56,19 @@ export default function AllTasks() {
             </Layout>
         </>
     );
+}
+
+// getStaticProps is used to fetch data from the server.
+//
+// This function gets called at build time on server-side.
+// It won't be called on client-side, so you can even do
+// direct database queries.
+export async function getStaticProps() {
+    const users: UserData[] = await getFakeUsers(100);
+
+    return {
+        props: {
+            users,
+        },
+    };
 }

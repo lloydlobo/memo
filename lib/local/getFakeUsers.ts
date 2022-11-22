@@ -1,7 +1,13 @@
 import { faker } from "@faker-js/faker";
 import { UserData } from "../../interfaces";
 
-export function getFakeUsers(id: number) {
+/**
+ * Get fake users
+ *
+ * @param id The id of the user
+ * @returns The fake users
+ */
+export function getFakeUsers(id: number): UserData[] {
     let users: UserData[] = [];
 
     for (let id = 0; id < 10; id++) {
@@ -19,7 +25,3 @@ export function getFakeUsers(id: number) {
 
     return users;
 }
-
-const usersObj = getFakeUsers(100);
-console.log(usersObj);
-export default usersObj;
