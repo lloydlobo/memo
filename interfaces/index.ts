@@ -22,8 +22,12 @@ export type TaskData = {
     id: number;
     uuid: string;
     name: string;
-    dueDate: string;
+    category: string;
+    completed: boolean;
     description: string;
+    dueDate: string;
+    slug: string;
+    timestamp: string;
 };
 
 export type DataType = {

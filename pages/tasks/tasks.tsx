@@ -1,29 +1,50 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import Layout from "../../components/Layout";
-import { UserData } from "../../interfaces";
-import { getFakeUsers } from "../../lib/local/getFakeUsers";
+import { TaskData, UserData } from "../../interfaces";
+import { getFakeTasks } from "../../lib/local/getFakeTasks";
 
 export default function AllTasks({
-    users,
+    tasks,
 }: {
-    users: UserData[];
+    tasks: TaskData[];
 }): JSX.Element {
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        toast.info("You have successfully changed your name");
+    const [tasksData, setTasksData] = useState(tasks);
+    const [completed, setCompleted] = useState<null | UserData["uuid"]>(null);
+
+    const handleChange = (uuid: TaskData["uuid"]) => {
+        const selectedTask = tasksData.filter((task) => task.uuid === uuid);
+        setTasksData((prev) => {
+            return tasksData.map((task) => {
+                if (task.uuid === uuid) {
+                    return {
+                        ...task,
+                        completed: !task.completed,
+                    };
+                }
+                return task;
+            });
+        });
+        toast.info(`Selected ${selectedTask[0].name.toString()}`, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+        });
     };
 
     return (
         <>
             <Layout title="All tasks">
                 <div className="container my-6 grid place-content-center">
-                    {users.length ? (
+                    {tasksData.length ? (
                         <ul className="card grid gap-2">
-                            {users.map((user, index) => {
+                            {tasksData.map((task, index) => {
                                 return (
                                     <li
-                                        key={`${index}-${user.uuid}`}
-                                        className="card-body rounded-lg bg-base-300 text-sm text-primary shadow-md"
+                                        key={`${index}-${task.uuid}`}
+                                        className="card-body rounded-lg bg-base-300 text-accent shadow-md"
                                     >
                                         <div className="grid grid-flow-col items-center gap-2">
                                             <div className="card-actions">
@@ -31,18 +52,57 @@ export default function AllTasks({
                                                     type="checkbox"
                                                     placeholder="done"
                                                     className="checkbox-accent checkbox"
-                                                    onChange={(e) =>
-                                                        handleChange(e)
+                                                    defaultChecked={
+                                                        task.completed
+                                                    }
+                                                    onChange={() =>
+                                                        handleChange(task.uuid)
                                                     }
                                                 />
                                             </div>
-                                            <div className="">
-                                                <h3>{user.name}</h3>
-                                                <p>{user.email}</p>
-                                                <p>{user.uuid}</p>
-                                                <p>{user.id}</p>
-                                                <p>{user.password}</p>
-                                                <p>{user.isAdmin}</p>
+                                            <div className="prose">
+                                                <h3 className="text-lg">
+                                                    {task.name}
+                                                </h3>
+                                                <div className="grid grid-flow-col items-center">
+                                                    <div className="badge">
+                                                        {task.category}
+                                                    </div>
+                                                    <div className="hidden hover:flex">
+                                                        <p className="badge-ghost text-xs">
+                                                            {task.uuid}
+                                                        </p>
+                                                        <p className="badge-ghost">
+                                                            {task.id}
+                                                        </p>
+                                                    </div>
+                                                    <div className="">
+                                                        {task.completed ? (
+                                                            <span className="badge-success badge uppercase">
+                                                                done
+                                                            </span>
+                                                        ) : (
+                                                            <span className="badge-info badge uppercase">
+                                                                todo
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    <div className="badge-ghost badge w-[12ch] text-clip">
+                                                        <span className="text-center">
+                                                            {task.dueDate
+                                                                .substring(
+                                                                    0,
+                                                                    10
+                                                                )
+                                                                .trim()}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div className="">
+                                                    <p className="">
+                                                        {task.description}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </li>
@@ -64,11 +124,12 @@ export default function AllTasks({
 // It won't be called on client-side, so you can even do
 // direct database queries.
 export async function getStaticProps() {
-    const users: UserData[] = await getFakeUsers(100);
+    const tasks: TaskData[] = await getFakeTasks(100);
+    console.log(tasks);
 
     return {
         props: {
-            users,
+            tasks,
         },
     };
 }
