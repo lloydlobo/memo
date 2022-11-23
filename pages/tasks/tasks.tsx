@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { SelectSort } from "../../components/app/tasks/SelectSort";
 import Layout from "../../components/Layout";
 import { TaskData, UserData } from "../../interfaces";
 import { getFakeTasks } from "../../lib/local/getFakeTasks";
 
+export type Funcs = {
+    handleSortCategoryAscendingClick: () => void;
+    handleSortIdAscendingClick: () => void;
+    handleSortCompletedClickAscending: () => void;
+    handleSortCompletedClickDescending: () => void;
+};
+// Array-mutating methods should not be used misleadingly (typescript:S4043)
+// https://bobbyhadz.com/blog/react-sort-array-of-objects
 export default function AllTasks({
     tasks,
 }: {
@@ -13,80 +22,60 @@ export default function AllTasks({
     const [completed, setCompleted] = useState<null | UserData["uuid"]>(null);
     let sortedTasks: TaskData[] = [];
 
-    const handleSortCompletedClick = (
-        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ): void => {
-        e.preventDefault();
-        // Array-mutating methods should not be used misleadingly (typescript:S4043)
+    const handleSortCompletedClickAscending = (): void => {
         const tasksCopy = [...tasksData];
-        sortedTasks = sortTasks(tasksCopy);
-        console.log({ tasksCopy });
+        sortedTasks = sortTasksAscending(tasksCopy);
         setTasksData(tasksCopy);
     };
 
-    // https://bobbyhadz.com/blog/react-sort-array-of-objects
-    const handleSortIdAscendingClick = (
-        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ): void => {
-        e.preventDefault();
-        // Array-mutating methods should not be used misleadingly (typescript:S4043)
+    const handleSortCompletedClickDescending = (): void => {
+        const tasksCopy = [...tasksData];
+        sortedTasks = sortTasksDescending(tasksCopy);
+        setTasksData(tasksCopy);
+    };
+
+    const handleSortIdAscendingClick = (): void => {
         const tasksCopy = [...tasksData];
         tasksCopy.sort((a, b) => a.id - b.id);
-        console.log({ tasksCopy });
         setTasksData(tasksCopy);
     };
 
     // 👇️ sort by task category property ASCENDING (A - Z)
     // Array-mutating methods should not be used misleadingly (typescript:S4043
-    const handleSortCategoryAscendingClick = (
-        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        e.preventDefault();
+    const handleSortCategoryAscendingClick = () => {
         const tasksCopy = [...tasksData];
         tasksCopy.sort((a, b) =>
-            a.category.toLowerCase() > b.category.toLowerCase() ? 1 : -1
+            a.category.toLowerCase() > b.category ? 1 : -1
         );
         setTasksData(tasksCopy);
     };
 
+    const funcs = {
+        handleSortCategoryAscendingClick,
+        handleSortIdAscendingClick,
+        handleSortCompletedClickAscending,
+        handleSortCompletedClickDescending,
+    };
+
     const handleChange = (uuid: TaskData["uuid"]) => {
         const selectedTask = tasksData.filter((task) => task.uuid === uuid)[0];
-        setTasksData((prev) => {
-            return tasksData.map((task) => {
+
+        setTasksData((prev) =>
+            tasksData.map((task) => {
                 if (task.uuid === uuid) {
-                    if (!task.completed) {
-                        toastInfoCompleted(selectedTask);
-                    }
+                    if (!task.completed) toastInfoCompleted(selectedTask);
                     return { ...task, completed: !task.completed };
-                }
-                return task;
-            });
-        });
+                } else return task;
+            })
+        );
     };
 
     return (
         <>
             <Layout title="All tasks">
                 <div className="container my-6 grid place-content-center">
-                    <div className="grid grid-flow-col gap-2">
-                        <button
-                            className="btn btn-primary btn-sm"
-                            onClick={(e) => handleSortCompletedClick(e)}
-                        >
-                            Sort by completed
-                        </button>
-                        <button
-                            className="btn btn-primary btn-sm"
-                            onClick={(e) => handleSortIdAscendingClick(e)}
-                        >
-                            Sort by id
-                        </button>
-                        <button
-                            className="btn btn-primary btn-sm"
-                            onClick={(e) => handleSortCategoryAscendingClick(e)}
-                        >
-                            Sort by category
-                        </button>
+                    <div className="z-30">
+                        <SelectSort funcs={funcs} />
                     </div>
                     <div className="grid">
                         {tasksData.length ? (
@@ -213,8 +202,14 @@ function taskIsCompleted(a: TaskData): number {
     return a.completed ? 1 : -1;
 }
 
-function sortTasks(tasksData: TaskData[]): TaskData[] {
+function sortTasksAscending(tasksData: TaskData[]): TaskData[] {
     return tasksData.sort((a, b) =>
         a.completed === b.completed ? 0 : taskIsCompleted(a)
+    );
+}
+
+function sortTasksDescending(tasksData: TaskData[]): TaskData[] {
+    return tasksData.sort((a, b) =>
+        a.completed === b.completed ? 0 : -1 * taskIsCompleted(a)
     );
 }
