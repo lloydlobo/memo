@@ -4,6 +4,17 @@ import Layout from "../../components/Layout";
 import { TaskData, UserData } from "../../interfaces";
 import { getFakeTasks } from "../../lib/local/getFakeTasks";
 
+const toastInfoCompleted = (task: TaskData) => {
+    toast.info(`Selected ${task.name.toString()}`, {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        theme: "dark",
+    });
+};
+
 export default function AllTasks({
     tasks,
 }: {
@@ -13,24 +24,17 @@ export default function AllTasks({
     const [completed, setCompleted] = useState<null | UserData["uuid"]>(null);
 
     const handleChange = (uuid: TaskData["uuid"]) => {
-        const selectedTask = tasksData.filter((task) => task.uuid === uuid);
+        const selectedTask = tasksData.filter((task) => task.uuid === uuid)[0];
         setTasksData((prev) => {
             return tasksData.map((task) => {
                 if (task.uuid === uuid) {
-                    return {
-                        ...task,
-                        completed: !task.completed,
-                    };
+                    if (!task.completed) {
+                        toastInfoCompleted(selectedTask);
+                    }
+                    return { ...task, completed: !task.completed };
                 }
                 return task;
             });
-        });
-        toast.info(`Selected ${selectedTask[0].name.toString()}`, {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
         });
     };
 
@@ -41,10 +45,15 @@ export default function AllTasks({
                     {tasksData.length ? (
                         <ul className="card grid gap-2">
                             {tasksData.map((task, index) => {
+                                // TODO: Sort tasks by priority and completed order.
                                 return (
                                     <li
                                         key={`${index}-${task.uuid}`}
-                                        className="card-body rounded-lg bg-base-300 text-accent shadow-md"
+                                        className={`${
+                                            task.completed
+                                                ? "opacity-50"
+                                                : "opacity-100"
+                                        } card-body rounded-lg bg-base-300 text-accent shadow-md`}
                                     >
                                         <div className="grid grid-flow-col items-center gap-2">
                                             <div className="card-actions">
