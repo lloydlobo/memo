@@ -24,6 +24,7 @@ export default function AllTasks({
         setTasksData(tasksCopy);
     };
 
+    // https://bobbyhadz.com/blog/react-sort-array-of-objects
     const handleSortIdAscendingClick = (
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ): void => {
@@ -32,6 +33,19 @@ export default function AllTasks({
         const tasksCopy = [...tasksData];
         tasksCopy.sort((a, b) => a.id - b.id);
         console.log({ tasksCopy });
+        setTasksData(tasksCopy);
+    };
+
+    // 👇️ sort by task category property ASCENDING (A - Z)
+    // Array-mutating methods should not be used misleadingly (typescript:S4043
+    const handleSortCategoryAscendingClick = (
+        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
+        e.preventDefault();
+        const tasksCopy = [...tasksData];
+        tasksCopy.sort((a, b) =>
+            a.category.toLowerCase() > b.category.toLowerCase() ? 1 : -1
+        );
         setTasksData(tasksCopy);
     };
 
@@ -54,21 +68,25 @@ export default function AllTasks({
         <>
             <Layout title="All tasks">
                 <div className="container my-6 grid place-content-center">
-                    <div className="grid grid-flow-col">
-                        <div className="btn-group">
-                            <button
-                                className="btn btn-primary"
-                                onClick={(e) => handleSortCompletedClick(e)}
-                            >
-                                Sort by completed
-                            </button>
-                            <button
-                                className="btn btn-primary"
-                                onClick={(e) => handleSortIdAscendingClick(e)}
-                            >
-                                Sort by id
-                            </button>
-                        </div>
+                    <div className="grid grid-flow-col gap-2">
+                        <button
+                            className="btn btn-primary btn-sm"
+                            onClick={(e) => handleSortCompletedClick(e)}
+                        >
+                            Sort by completed
+                        </button>
+                        <button
+                            className="btn btn-primary btn-sm"
+                            onClick={(e) => handleSortIdAscendingClick(e)}
+                        >
+                            Sort by id
+                        </button>
+                        <button
+                            className="btn btn-primary btn-sm"
+                            onClick={(e) => handleSortCategoryAscendingClick(e)}
+                        >
+                            Sort by category
+                        </button>
                     </div>
                     <div className="grid">
                         {tasksData.length ? (
