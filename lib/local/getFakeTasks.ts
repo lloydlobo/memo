@@ -7,9 +7,9 @@ import { TaskData } from "../../interfaces";
  * @param id The id of the task.
  * @returns A list of fake tasks.
  */
-export function getFakeTasks(id: number): TaskData[] {
+export function getFakeTasks(ids: number): TaskData[] {
     const tasks: TaskData[] = [];
-    for (let id = 0; id < 10; id++) {
+    for (let id = 0; id < ids; id++) {
         const uuid = faker.datatype.uuid();
         const task: TaskData = {
             id: id,
